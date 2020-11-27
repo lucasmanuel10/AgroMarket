@@ -31,7 +31,7 @@ function register(first_name, last_name, email, password, account_type) {
         "password": password, 
         "account-type": account_type
     }
-    app.users[app.users.length()] = new_user;
+    app.users[app.users.length] = new_user;
     current_user = user;
     return true;
 }
