@@ -20,7 +20,7 @@ function login(email, password) {
     return false;
 }
 
-function register(first_name, last_name, email, password, account_type, ) {
+function register(first_name, last_name, email, password, account_type ) {
     for (user in app.users)
         if(user.email.normalize == email.normalize)
             return false;
