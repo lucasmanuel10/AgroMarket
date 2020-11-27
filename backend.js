@@ -13,7 +13,7 @@ function aux(text) {
 
 function login(email, password) {
     for (user in app.users)
-        if(user.email.normalize == email.normalize && user.password.normalize == password.normalize ) {
+        if(user.email == email && user.password == password ) {
             current_user = user;
             return true;
         }  
@@ -22,7 +22,7 @@ function login(email, password) {
 
 function register(first_name, last_name, email, password, account_type ) {
     for (user in app.users)
-        if(user.email.normalize == email.normalize)
+        if(user.email == email)
             return false;
     new_user = {
         "first_name": first_name,
@@ -36,7 +36,6 @@ function register(first_name, last_name, email, password, account_type ) {
     return true;
 }
 
-
 function load_products() {
     var products = [];
     for (product in app.products) {
@@ -44,6 +43,7 @@ function load_products() {
     }
     return products;
 }
+
 
 
 
