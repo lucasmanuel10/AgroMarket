@@ -1,5 +1,8 @@
 {
-    "email":"jaca.pereira@campus.fct.unl.pt", 
-    "password":"123macaquinhodochines", 
-    "account-type":"normal"
+    "users": 
+           {
+            "email": "jaca.pereira@campus.fct.unl.pt",
+            "password": "1234",
+            "account-type": "normal" 
+            }
 }
