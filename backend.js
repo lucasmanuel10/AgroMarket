@@ -1,21 +1,20 @@
 var database = null;
 var current_user = null;
 const firebaseConfig = null;
-function load_firebase() {
-    firebaseConfig = {
-        apiKey: "AIzaSyA2JNM8baGJWfSa59WQd3-8P-9zqC9TV3U",
-        authDomain: "projeto1-cbb1a.firebaseapp.com",
-        databaseURL: "https://projeto1-cbb1a.firebaseio.com",
-        projectId: "projeto1-cbb1a",
-        storageBucket: "projeto1-cbb1a.appspot.com",
-        messagingSenderId: "366062903132",
-        appId: "1:366062903132:web:f319507ffa693e32fd2b99",
-        measurementId: "G-T5155MKZ4N"
-      };
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
-    database = firebase.database();
-}
+
+firebaseConfig = {
+    apiKey: "AIzaSyA2JNM8baGJWfSa59WQd3-8P-9zqC9TV3U",
+    authDomain: "projeto1-cbb1a.firebaseapp.com",
+    databaseURL: "https://projeto1-cbb1a.firebaseio.com",
+    projectId: "projeto1-cbb1a",
+    storageBucket: "projeto1-cbb1a.appspot.com",
+    messagingSenderId: "366062903132",
+    appId: "1:366062903132:web:f319507ffa693e32fd2b99",
+    measurementId: "G-T5155MKZ4N"
+};
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+database = firebase.database();
 
 
 function login(email, password) {
