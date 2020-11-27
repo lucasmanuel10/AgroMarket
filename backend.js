@@ -12,7 +12,7 @@ function aux(text) {
 }
 
 function login(email, password) {
-    for (user in app.users)
+    for (var user in app.users)
         if(user.email == email && user.password == password ) {
             current_user = user;
             return true;
@@ -20,8 +20,8 @@ function login(email, password) {
     return false;
 }
 
-function register(first_name, last_name, email, password, account_type ) {
-    for (user in app.users)
+function register(first_name, last_name, email, password, account_type) {
+    for (var user in app.users)
         if(user.email == email)
             return false;
     new_user = {
@@ -36,15 +36,34 @@ function register(first_name, last_name, email, password, account_type ) {
     return true;
 }
 
-function load_products() {
+function is_seller() {
+    if(current_user.account_type == "true")
+        return true;
+    return false;
+}
+
+function get_products() {
     var products = [];
-    for (product in app.products) {
+    for (var product in app.products) {
         products.push(product);
     }
     return products;
 }
 
+function get_products(category) {
+    var products = [];
+    for (var product in app.products) {
+        if(product.category == category)
+            products.push(product);
+    }
+    return products;
+}
 
-
-
-
+function get_products_ordered() {
+    var products = [];
+    for (var product in app.products) {
+        if(product.buyer_email == current_user.email)
+            products.push(product);
+    }
+    return products;
+}
