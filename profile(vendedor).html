@@ -61,18 +61,18 @@
     <div class="col-md-8">
       <div class="card-body">
         <h2 class="card-title">Meu Perfil de Vendedor</h2><hr>
-          <p class="card-text"><strong>Nome Próprio:</strong> Abel Mateus <a href="#" class="btn btn-success btn-sm" style="float: right">Alterar Nome</a></p>
-          <p class="card-text"><strong>Apelido:</strong> Rodrigues Xavier <a href="#" class="btn btn-success btn-sm" style="float: right">Alterar Apelido</a></p>
-          <p class="card-text"><strong>Email:</strong> abelx@gmail.com <a href="#" class="btn btn-success btn-sm" style="float: right">Alterar Email</a></p>
-          <p class="card-text"><strong>Password:</strong> ******* <a href="#" class="btn btn-success btn-sm" style="float: right">Alterar Password</a></p>
+          <p class="card-text"><strong>Nome Próprio:</strong> Abel Mateus <button type="button" class="btn btn-success btn-sm" style="float: right" data-toggle="modal" data-target="#exampleModalNome">Alterar Nome</button></p>
+          <p class="card-text"><strong>Apelido:</strong> Rodrigues Xavier <button type="button" class="btn btn-success btn-sm" style="float: right" data-toggle="modal" data-target="#exampleModalApelido">Alterar Apelido</button></p>
+          <p class="card-text"><strong>Email:</strong> abelx@gmail.com <button type="button" class="btn btn-success btn-sm" style="float: right" data-toggle="modal" data-target="#exampleModalEmail">Alterar Email</button></p>
+          <p class="card-text"><strong>Password:</strong> ******* <button type="button" class="btn btn-success btn-sm" style="float: right" data-toggle="modal" data-target="#exampleModalPassword">Alterar Password</button></p>
           <hr>
           <div class="custom-control custom-radio">
             <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" onclick = "document.location.href='profile(cliente).html'" checked>
               <label class="custom-control-label" for="defaultChecked">Perfil de Vendedor</label>
           </div>
           <br>
-          <p class="card-text"><strong>Número de Vendedor:</strong> 999999 <a href="#" class="btn btn-primary btn-sm" style="float: right">Alterar Número</a></p>
-          <p class="card-text"><strong>Contacto Telefónico:</strong> 912345678 <a href="#" class="btn btn-primary btn-sm" style="float: right">Alterar Contacto</a></p>
+          <p class="card-text"><strong>Número de Vendedor:</strong> 999999 <button type="button" class="btn btn-primary btn-sm" style="float: right" data-toggle="modal" data-target="#exampleModalNumero">Alterar Número</button></p>
+          <p class="card-text"><strong>Contacto Telefónico:</strong> 912345678 <button type="button" class="btn btn-primary btn-sm" style="float: right" data-toggle="modal" data-target="#exampleModalContacto">Alterar Contacto</button></p>
           
           <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
@@ -83,7 +83,7 @@
             Adicionar/Editar Agenda
         </button>
 
-        <!-- Modal -->
+        <!-- Modal Agenda -->
         <div class="modal fade" id="exampleModalAgenda" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -117,18 +117,18 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-success">Guardar Alterações</button>
+                <button type="button" class="btn btn-primary">Guardar Alterações</button>
               </div>
             </div>
           </div>
         </div>
           
-        <!-- Modal -->
+        <!-- Modal Dados Bancários -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Dados de Pagamento</h5>
+                <h3 class="modal-title" id="exampleModalCenterTitle">Dados de Pagamento</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -151,7 +151,211 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary">Guardar Alterações</button>
+              </div>
+            </div>
+          </div>
+        </div>
+          
+          
+            <!-- Modal Nome -->
+        <div class="modal fade" id="exampleModalNome" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalCenterTitle">Alterar o Nome Próprio</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group row">
+                      <label for="inputNome" class="col-sm-10 col-form-label"><h5>Insira o Seu Novo Nome Próprio:</h5></label>
+                      <br><br>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputNome" placeholder="Nome Próprio">
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                 <button type="button" class="btn btn-success">Guardar Alterações</button>
+              </div>
+            </div>
+          </div>
+        </div>
+          
+           <!-- Modal Apelido -->
+        <div class="modal fade" id="exampleModalApelido" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalCenterTitle">Alterar o Apelido</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group row">
+                      <label for="inputApelido" class="col-sm-10 col-form-label"><h5>Insira o Seu Novo Apelido:</h5></label>
+                      <br><br>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputApelido" placeholder="Apelido">
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success">Guardar Alterações</button>
+              </div>
+            </div>
+          </div>
+        </div>
+          
+           <!-- Modal Email -->
+        <div class="modal fade" id="exampleModalEmail" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalCenterTitle">Alterar o Email</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group row">
+                      <label for="inputEmail" class="col-sm-10 col-form-label"><h5>Insira o Seu Novo Email:</h5></label>
+                      <br><br>
+                    <div class="col-sm-10">
+                      <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success">Guardar Alterações</button>
+              </div>
+            </div>
+          </div>
+        </div>
+          
+        <!-- Modal Password -->
+        <div class="modal fade" id="exampleModalPassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalCenterTitle">Alterar a Password</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group row">
+                      <label for="inputPassword" class="col-sm-10 col-form-label"><h5>Insira a Sua Password Atual:</h5></label>
+                      <br><br>
+                    <div class="col-sm-10">
+                      <input type="password" class="form-control" id="inputPassword" placeholder="Password Atual">
+                      <input type="checkbox" onclick="myFunction()" style="margin-top: 10px"> Mostrar Password
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                      <label for="inputPassword2" class="col-sm-10 col-form-label"><h5>Insira a Sua Nova Password:</h5></label>
+                      <br><br>
+                    <div class="col-sm-10">
+                      <input type="password" class="form-control" id="inputPassword2" placeholder="Nova Password">
+                      <input type="checkbox" onclick="myFunction2()" style="margin-top: 10px"> Mostrar Password
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success">Guardar Alterações</button>
+              </div>
+            </div>
+          </div>
+        </div>
+          
+        <script>
+             function myFunction() {
+                  var x = document.getElementById("inputPassword");
+                  if (x.type === "password") {
+                    x.type = "text";
+                  } else {
+                    x.type = "password";
+                  }
+                }
+        
+            function myFunction2() {
+              var x = document.getElementById("inputPassword2");
+              if (x.type === "password") {
+                x.type = "text";
+              } else {
+                x.type = "password";
+              }
+            }    
+        </script>
+          
+        <!-- Modal Nº Vendedor -->
+        <div class="modal fade" id="exampleModalNumero" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalCenterTitle">Alterar o Número de Vendedor</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group row">
+                      <label for="inputNumero" class="col-sm-10 col-form-label"><h5>Insira o Seu Novo Número de Vendedor:</h5></label>
+                      <br><br>
+                    <div class="col-sm-10">
+                      <input type="number" max="999999" min="000000" class="form-control" id="inputNumero" placeholder="Número de Vendedor">
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary">Guardar Alterações</button>
+              </div>
+            </div>
+          </div>
+        </div>
+          
+          <!-- Modal Contacto -->
+        <div class="modal fade" id="exampleModalContacto" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalCenterTitle">Alterar o Contacto Telefónico</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group row">
+                      <label for="inputContacto" class="col-sm-10 col-form-label"><h5>Insira o Seu Novo Contacto Telefónico:</h5></label>
+                      <br><br>
+                    <div class="col-sm-10">
+                      <input type="tel" class="form-control" id="inputContacto" placeholder="Número de Telefone">
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary">Guardar Alterações</button>
               </div>
             </div>
           </div>
