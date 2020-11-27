@@ -1,0 +1,90 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="backend2.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body onload="load_json()">
+    <div class="text-center mt-5">
+      <div class="offset-md-3 col-md-6 card bg-light">
+        <form>
+          <img src="images/logo.png" height="100px" width="100px" alt="">
+          <h3>AGRO MARKET</h3>
+          <div class="form-group pt-3">
+            <label for="exampleInputEmail1">Primeiro Nome</label>
+            <input type="text" class="form-control" id="nameId">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Ultimo Nome</label>
+            <input type="text" class="form-control" id="lnameId">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email</label>
+            <input type="email" class="form-control" id="emailId" aria-describedby="emailHelp">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="passwordId">
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1" onclick="myFunction()">
+            <label class="form-check-label" for="exampleCheck1">Pretendo vender produtos</label>
+          </div>
+          <div id="seller_code" class="form-group pt-2" style="display: none">
+            <label for="exampleInputEmail1">Codigo de vendedor</label>
+            <input type="text" class="form-control" id="name">
+          </div>
+          <div class="pt-3">
+            <button onload="register_()" type="button" class="btn btn-primary btn-block">Registar</button>
+          </div>
+      </form>
+      </div>
+        
+    </div>
+</body>
+</html>
+
+<script>
+  function myFunction() {
+    if(document.getElementById("seller_code").style.display == "none") {
+      document.getElementById("seller_code").style.display = "block";
+    } else {
+      document.getElementById("seller_code").style.display = "none";
+    }
+  }
+
+  function register_() {
+    var name = document.getElementById('nameId').value;
+    var lname = document.getElementById('lnameId').value;
+    var email = document.getElementById('emailId').value;
+    var password = document.getElementById('passwordId').value;
+    var account_type = false;
+    if(document.getElementById("seller_code").style.display == "none") {
+      account_type = true;
+    }
+    register(name, lname, email, password, account_type);
+  }
+</script>
+
+<style>
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+.my-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+</style>
