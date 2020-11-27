@@ -1,10 +1,20 @@
 {
-    "users": 
-           {
+    "users": [
+        {
             "first_name": "João",
             "last_name": "Pereira",
             "email": "jaca.pereira@campus.fct.unl.pt",
             "password": "1234",
             "account-type": "normal" 
-            }
+        }],
+    "products": [
+        {
+            "name": "Tomates",
+            "description": "GG. Grandes e Grossos",
+            "quantity": "2",
+            "price": "1 kg",
+            "category": "Fruta",
+            "mercado": "Mercado da Ribeira",
+            "foto": "foto"
+        }]
 }
