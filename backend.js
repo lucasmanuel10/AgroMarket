@@ -1,40 +1,56 @@
-var app = null;
+var database = null;
 var current_user = null;
-
-function load_json() {
-    fetch('app.json')
-  .then(response => response.json())
-  .then(text => aux(text))     
+const firebaseConfig = null;
+function load_firebase() {
+    firebaseConfig = {
+        apiKey: "AIzaSyA2JNM8baGJWfSa59WQd3-8P-9zqC9TV3U",
+        authDomain: "projeto1-cbb1a.firebaseapp.com",
+        databaseURL: "https://projeto1-cbb1a.firebaseio.com",
+        projectId: "projeto1-cbb1a",
+        storageBucket: "projeto1-cbb1a.appspot.com",
+        messagingSenderId: "366062903132",
+        appId: "1:366062903132:web:f319507ffa693e32fd2b99",
+        measurementId: "G-T5155MKZ4N"
+      };
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    database = firebase.database();
 }
 
-function aux(text) {
-    app = text;
-}
 
 function login(email, password) {
-    for (var user in app.users)
-        if(user.email == email && user.password == password ) {
-            current_user = user;
-            return true;
-        }  
-    return false;
+    user = null;
+    try {
+        database.ref('/users/' + email).on('value', function(snapshot) {
+            user = snapshot.val; 
+         });
+         if(user.Password!=password)
+            return false;
+    } catch (error) {
+        return false;
+    }
+    return true;
 }
 
 function register(first_name, last_name, email, password, account_type) {
-    for (var user in app.users)
-        if(user.email == email)
-            return false;
-    new_user = {
-        "first_name": first_name,
-        "last_name": last_name,
-        "email": email, 
-        "password": password, 
-        "account-type": account_type
+    user = null;
+    try {
+        database.ref('/users/' + email).on('value', function(snapshot) {
+            user = snapshot.val; 
+         });
+    } catch (error) {
+        database.ref('/users/' + email).set({
+            FirstName: first_name,
+            LastName: last_name,
+            Email: email,
+            Password: password,
+            AccountType: account_type
+         })
+        return true;
     }
-    app.users[app.users.length] = new_user;
-    const fs = require(['fs']);
-    fs.writeFileSync("./app.json",app);
-    return true;
+    return false;
+        
+     
 }
 
 function is_seller() {
