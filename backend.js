@@ -32,6 +32,9 @@ function register(first_name, last_name, email, password, account_type) {
         "account-type": account_type
     }
     app.users[app.users.length] = new_user;
+    var file = new File("app.json");
+    file.open("w");
+    file.write(app);
     current_user = user;
     return true;
 }
