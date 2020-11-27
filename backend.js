@@ -32,9 +32,7 @@ function register(first_name, last_name, email, password, account_type) {
         "account-type": account_type
     }
     app.users[app.users.length] = new_user;
-    var file = new File(app, "app.json",{type: "text/plain",});
-    file.write();
-    current_user = user;
+    fs.writeFileSync("./app.json",app);
     return true;
 }
 
