@@ -37,7 +37,13 @@ function register(first_name, last_name, email, password, account_type ) {
 }
 
 
-
+function load_products() {
+    var products = [];
+    for (product in app.products) {
+        products.push(product);
+    }
+    return products;
+}
 
 
 
