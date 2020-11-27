@@ -9,7 +9,7 @@ function load_json() {
 }
 
 function aux(text) {
-    console.log(text.getElementById("users"));
+    console.log(text.users);
 }
 function login(email, password) {
     for (user in app.getElementById("users"))
