@@ -4,10 +4,13 @@ var current_user = null;
 function load_json() {
     fetch('teste.json')
   .then(response => response.json())
-  .then(text => app = text) 
-  console.log(app);
+  .then(text => aux(text)) 
+    
 }
 
+function aux(text) {
+    console.log(text);
+}
 function login(email, password) {
     for (user in app.getElementById("users"))
         if(user.getElementById("email").normalize == email.normalize && user.getElementById("password").normalize == password.normalize )
