@@ -22,7 +22,7 @@ firebase.analytics();
 function login(email, password) {
     var user = null;
     firebase.database().ref('users/' + email.split("@")[0]).on('value', function(snapshot) {
-        user = snapshot.val; 
+        user = snapshot.val(); 
     });
     console.log(user)
     if(user == null || user.Password!=password)
@@ -34,7 +34,7 @@ function register(first_name, last_name, email, password, account_type) {
     var user = null;
   
     firebase.database().ref('users/' + email.split("@")[0]).on('value', function(snapshot) { 
-        user = snapshot.val; 
+        user = snapshot.val(); 
     });
     if(user != null)
         return false;
@@ -55,7 +55,7 @@ function register(first_name, last_name, email, password, account_type) {
 function get_products() {
     var products = null;
     firebase.database().ref('products/').on('value', function(snapshot) { 
-        products = snapshot.val; 
+        products = snapshot.val(); 
     });
     if (products == null)
         return [];
@@ -66,7 +66,7 @@ function get_products() {
 function get_products(category) {
     var products = null;
     firebase.database().ref('products/' + category).on('value', function(snapshot) { 
-        products = snapshot.val; 
+        products = snapshot.val(); 
     });
     if (products == null)
         return [];
@@ -76,7 +76,7 @@ function get_products(category) {
 function get_products_ordered(email) {
     var products = null;
     firebase.database().ref('products/').on('value', function(snapshot) { 
-        products = snapshot.val; 
+        products = snapshot.val(); 
     });
     if (products == null)
         return [];
