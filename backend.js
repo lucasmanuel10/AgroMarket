@@ -19,14 +19,14 @@ firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
 
-function login(email, password) {
+function login(email, password, callback) {
     var user = null;
     firebase.database().ref('users/' + email.split("@")[0]).once('value').then(function(snapshot){
-        user = snapshot.val();    
-    }).then(function(){
+        user = snapshot.val();
+        var x = true;
         if(user == null || user.Password!=password)
-            return false;
-        return true;
+            x = false;
+        callback(x)
     });
 }
 
