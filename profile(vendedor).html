@@ -95,7 +95,7 @@
               </div>
               <div class="modal-body">
                 <form class="needs-validation" novalidate>
-                  <div class="form-row">
+                  <div class="form-row" id="divAgenda">
                     <div class="col-md-6 mb-3">
                       <label for="validationCustom02"><h5>Mercado:</h5></label>
                       <select class="custom-select border border-dark rounded-0" required>
@@ -113,6 +113,7 @@
                         <input type="date" style="width: 225px; height: 38px">
                     </div>
                   </div>
+                 <div id="Agenda"></div>
                 </form>
               </div>
               <div class="modal-footer">
@@ -300,7 +301,16 @@
               } else {
                 x.type = "password";
               }
-            }    
+            }   
+            
+            document.getElementById("plusAgenda").onclick = function() {
+                var container = document.getElementById("Agenda");
+                var div = document.getElementById("divAgenda");
+                container.appendChild(div.cloneNode(true));
+                document.getElementById("lessAgenda").onclick = function() {
+                  container.parentNode.removeChild(div);
+                }
+              }
         </script>
           
         <!-- Modal Nº Vendedor -->
