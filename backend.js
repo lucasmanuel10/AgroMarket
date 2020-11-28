@@ -35,7 +35,7 @@ function login(email, password) {
 function register(first_name, last_name, email, password, account_type) {
     var user = null;
   
-    database.ref('users/' + email.split("@")[0]).on('value', function(snapshot) { 
+    firebase.database.ref('users/' + email.split("@")[0]).on('value', function(snapshot) { 
         user = snapshot.val; 
     });
     if(user == null)
