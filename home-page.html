@@ -23,9 +23,9 @@
 
     <title>Início</title>
   </head>
-  <body onload="loadProducts()">
+  <body onload="loadNavbar()">
     <nav class="navbar navbar-expand-lg" style="background-color: #90EE90;">
-			<a class="navbar-brand" onclick="homepage();" style="cursor: pointer;"><img src="images/logo.png" height="50px"></a>
+			<a class="navbar-brand" href="#"><img src="images/logo.png" height="50px"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -33,7 +33,7 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item">
-						<a class="nav-link text-dark" onclick="homepage();" style="cursor: pointer;"><b>Início</b></a>
+						<a class="nav-link text-dark" href="#"><b>Início</b></a>
 					</li>
 				</ul>
 				<div class="mr-3">
@@ -58,7 +58,30 @@
 		</nav>
 
     <div class="p-3 mb-2 text-dark" id='produtos'> <!--Isto vai estar em loop-->
-			
+			<div class="row">
+				<div class="offset-md-2 col-md-8">
+					<div class="bg-light row border border-success">
+						<div class="col-md-4 my-3">
+							<img class="w-100" src="images/peanuts.jpg" height="200px" class="mr-3" alt="Amendoins">
+						</div>
+						<div class="col-md-8 my-3">
+							<button type="button" class="btn btn-success float-right">
+								<svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-cart-plus-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+									<path fill-rule="evenodd" d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM4 14a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm7 0a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+								</svg>
+							</button>
+							<h5>Amendoins</h5>
+							<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+							
+							<p class="mb-0"><b>Produtor:</b> Carlos Henriques</p>
+							<p class="mb-0"><b>Localização:</b> Mercado de Leiria</p>
+							<p><b>Preço: </b> 10 euros</p>  
+							<input type="number" id="quantity" name="quantity" value="0.2" step=0.01 min="0" max="10"> Kg
+							<a class="btn btn-success float-right" href="product.html#amendoins" role="button">Ver produto</a>
+						</div>
+					</div>
+				</div>
+			</div>
 	</div>
 	  
 	  <footer class="page-footer font-small blue-grey lighten-5">
@@ -166,27 +189,27 @@
 </body>
 </html>
 <script>
-    function loadProducts() {  
-	    loadNavbar();
-	    var email = window.location.hash.substr(1);
-	    email = email[1];
-	    get_products(function(produto) {
-		console.log(produto);
-		for(p in produto) {
-		    var img = '<img class="w-100" src='+p.Image+' alt="">'
-		    document.getElementById("imageId").innerHTML = img;
+    function loadProducts() {   
+    const urlParams = new URLSearchParams(window.location.search);
+    var email = urlParams.get('email').split("#");
+    email = email[0];
+    get_products(function(produto) {
+        console.log(produto);
+        for(p in produto) {
+            var img = '<img class="w-100" src='+p.Image+' alt="">'
+            document.getElementById("imageId").innerHTML = img;
 
-		    var html_ = '<p class="mb-0"><b>Produto: </b>'+p.ProductName+'</p><p class="mb-0"><b>Categoria: </b>'+p.Category+'</p><p class="mb-0"><b>Descrição: </b>'+p.Description+'</p><p class="mb-0"><b>Produtor: </b>'+p.Seller+'</p><p class="mb-0"><b>Localização: </b>'+p.Market+'</p>'
+            var html_ = '<p class="mb-0"><b>Produto: </b>'+p.ProductName+'</p><p class="mb-0"><b>Categoria: </b>'+p.Category+'</p><p class="mb-0"><b>Descrição: </b>'+p.Description+'</p><p class="mb-0"><b>Produtor: </b>'+p.Seller+'</p><p class="mb-0"><b>Localização: </b>'+p.Market+'</p>'
+        
+            if(p.Delivery) {
+                html_ += '<p class="mb-0"><img src="images/domicilio-icon.png" height="20px"><b> Entrega ao domicílio</b></p>';
+            }
 
-		    if(p.Delivery) {
-			html_ += '<p class="mb-0"><img src="images/domicilio-icon.png" height="20px"><b> Entrega ao domicílio</b></p>';
-		    }
-
-		    html_ += '<p><b>Preço por kg: </b>'+p.Price+' €</p><p><input type="number" id="quantity" name="quantity" value="0.2" step=0.01 min="0" max="10"> Kg</p><button type="button" class="btn btn-success">Adicionar ao carrinho</button>';
-
-		    document.getElementById("produtos").innerHTML += html_;
-		}  
-	    });
+            html_ += '<p><b>Preço por kg: </b>'+p.Price+' €</p><p><input type="number" id="quantity" name="quantity" value="0.2" step=0.01 min="0" max="10"> Kg</p><button type="button" class="btn btn-success">Adicionar ao carrinho</button>';
+        
+            document.getElementById("produtos").innerHTML += html_;
+        }  
+    });
   }
 
 
