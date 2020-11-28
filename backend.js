@@ -77,7 +77,7 @@ function sell_product(email, product_name, description, stock,price, category,ma
         Delivery: delivery 
     }).then({
       callback();  
-    })    
+    });    
 }
 
 function get_products(callback) {
