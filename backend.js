@@ -90,8 +90,9 @@ function get_product(product_name, callback) {
 function get_products(callback) {
     firebase.database().ref('products/').once('value').then(function(snapshot){
         var products = snapshot.val();
-        console.log(products);
+        console.log("chula homo" + products);
         if(products == null) {
+            console.log("o chula é gay");
             products_ = []; 
             callback(products_);  
         } else {
@@ -99,6 +100,7 @@ function get_products(callback) {
            snapshot.forEach(function(childSnapshot) {
                 products_.push(childSnapshot.val());
            }).then(function(){
+                console.log("mas mesmo gay" + products_);
                 callback(products_);
            }); 
         }
