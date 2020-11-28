@@ -96,7 +96,7 @@ function get_products(callback) {
         } else {
            var products_ = [];
            snapshot.forEach(function(childSnapshot) {
-                products_.push(childSnapshot.val());
+                products_.push(childSnapshot.val().toJSON());
            }); 
            callback(products);    
         }
