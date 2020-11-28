@@ -26,7 +26,7 @@ function login(email, password) {
     });
     if(user == null || user.Password!=password)
         return false;
-    return false;
+    return true;
 }
 
 function register(first_name, last_name, email, password, account_type) {
