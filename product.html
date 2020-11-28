@@ -85,6 +85,7 @@
 
 <script>
   function teste() {
+	console.log("teste");
     const urlParams = new URLSearchParams(window.location.search);
     var myParam = urlParams.get('produto').split("#");
     var product_name = myParam[0];
@@ -97,6 +98,8 @@
       }
 
       html_ += '<p><b>Preço por kg: </b>'+p.Price+'</p><p><input type="number" id="quantity" name="quantity" value="0.2" step=0.01 min="0" max="10"> Kg</p><button type="button" class="btn btn-success">Adicionar ao carrinho</button>';
+    
+      document.getElementById("produto").innerHTML = html_;
     });
   }
 </script>
