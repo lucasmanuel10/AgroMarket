@@ -64,15 +64,15 @@ function is_seller(email, callback) {
     });
 }
 
-function sell_product(email, product_name, description, stock,price, kg, category,market, callback) {
+function sell_product(email, product_name, description, stock,price, category,market, image, callback) {
     firebase.database().ref('product/' + product_name).set({
         ProductName: product_name,
         Description: description,
         Stock: stock,
         Price: price,
-        Kg: kg,
         Category: category,
-        Market: market
+        Market: market,
+        Image: image
     });
     firebase.database().ref('users/' + email.split("@")[0]).once('value').then(function(snapshot) {
         var x = snapshot.val().SellingCart;
@@ -83,7 +83,6 @@ function sell_product(email, product_name, description, stock,price, kg, categor
         callback(x);  
     });      
 }
-
 function get_products() {
     var products = null;
     firebase.database().ref('products/').once('value').then(function(snapshot){

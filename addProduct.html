@@ -46,13 +46,13 @@
         <form>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-default">Nome do produto</span>
+              <span class="input-group-text" id="product_name">Nome do produto</span>
             </div>
             <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <label class="input-group-text" for="inputGroupSelect01">Categorias</label>
+              <label class="input-group-text" for="category">Categorias</label>
             </div>
             <select class="custom-select" id="inputGroupSelect01">
               <option selected>Choose...</option>
@@ -63,13 +63,13 @@
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-default">Descrição</span>
+              <span class="input-group-text" id="description">Descrição</span>
             </div>
             <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <label class="input-group-text" for="inputGroupSelect01">Localização</label>
+              <label class="input-group-text" for="market">Localização</label>
             </div>
             <select class="custom-select" id="inputGroupSelect01">
               <option selected>Choose...</option>
@@ -80,13 +80,13 @@
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-default">Quantidade em kg</span>
+              <span class="input-group-text" id="stock">Quantidade em kg</span>
             </div>
             <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-default">Preço em euros</span>
+              <span class="input-group-text" id="price">Preço em euros</span>
             </div>
             <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
           </div>
@@ -95,7 +95,7 @@
               <span class="input-group-text">Imagem</span>
             </div>
             <div class="custom-file">
-              <input type="file" class="custom-file-input" id="inputGroupFile01">
+              <input type="file" class="custom-file-input" id="image">
               <label class="custom-file-label" for="inputGroupFile01">Escolher Imagem</label>
             </div>
           </div>
@@ -122,16 +122,19 @@
   }
 
   function register_() {
-    var name = document.getElementById('nameId').value;
-    var lname = document.getElementById('lnameId').value;
-    var email = document.getElementById('emailId').value;
-    var password = document.getElementById('passwordId').value;
-    var account_type = false;
-    if(document.getElementById("seller_code").style.display == "none") {
-      account_type = true;
-    }
-    console.log("merda");
-    register(name, lname, email, password, account_type);
+    var product_name = document.getElementById('product_name').value;
+    var description = document.getElementById('description').value;
+    var email = window.location.hash.substr(1);
+    var stock = document.getElementById('stock').value;
+    var price = document.getElementById('price').value;
+    var category = document.getElementById('category').value;
+    var market = document.getElementById('market').value;
+    var image = document.getElementById('image').value;
+    sell_product(email, product_name, description, stock,price, category,market, image, function(b){
+        if(b) {
+          console.log("aqui deve se por o produto a mostra");
+        }
+    })
   }
 </script>
 
