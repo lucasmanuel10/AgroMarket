@@ -169,7 +169,7 @@
     function loadProducts() {  
 	    loadNavbar();
 	    const urlParams = new URLSearchParams(window.location.search);
-	    var email = urlParams.get('produto').split("#");
+	    var email = urlParams.get('email').split("#");
 	    email = email[1];
 	    get_products(function(produto) {
 		console.log(produto);
