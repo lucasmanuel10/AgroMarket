@@ -45,7 +45,8 @@ function register(first_name, last_name, email, password, account_type, callback
                 Email: email,
                 Password: password,
                 AccountType: account_type,
-                Cart: []
+                Cart: [],
+                History: []
             });
             x = true;
          } 
