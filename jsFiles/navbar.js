@@ -16,12 +16,9 @@ function myProfile() {
 
   is_seller(email, function(b){
     if(b) 
-      window.location.href = "https://lucasmanuel10.github.io/AgroMarket/profile(vendedor).html";
+      window.location.href = "https://lucasmanuel10.github.io/AgroMarket/profile(vendedor).html#" + email;
     else
-      window.location.href = "https://lucasmanuel10.github.io/AgroMarket/profile(cliente).html";
+      window.location.href = "https://lucasmanuel10.github.io/AgroMarket/profile(cliente).html#" + email;
   });
 }
-
-
-
 
