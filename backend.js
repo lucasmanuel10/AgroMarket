@@ -47,7 +47,7 @@ function register(first_name, last_name, email, password, account_type) {
         Email: email,
         Password: password,
         AccountType: account_type
-     })
+     });
     return true;
         
      
