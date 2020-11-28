@@ -64,6 +64,26 @@ function is_seller(email, callback) {
     });
 }
 
+function sell_product(email, product_name, description, stock,price, kg, category,market, callback) {
+    firebase.database().ref('product/' + product_name).set({
+        ProductName: product_name,
+        Description: description,
+        Stock: stock,
+        Price: price,
+        Kg: kg,
+        Category: category,
+        Market: market
+    });
+    firebase.database().ref('users/' + email.split("@")[0]).once('value').then(function(snapshot) {
+        var x = snapshot.val().SellingCart;
+        x.push(product_name);
+        firebase.database().ref('users/' + email.split("@")[0]).set({
+            ShoppingCart: x
+        });
+        callback(x);  
+    });      
+}
+
 function get_products() {
     var products = null;
     firebase.database().ref('products/').once('value').then(function(snapshot){
