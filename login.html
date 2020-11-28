@@ -60,7 +60,10 @@ body {
   function login_() {
     var email = document.getElementById('emailId').value;
     var password = document.getElementById('passwordId').value;
-    console.log(login(email, password));
-    console.log(email, password);
+    var x = login(email, password);
+    if(x)
+      window.location.href = "/home-page.html#"+email;
+    else
+      alert("credenciais erradas");
   }
 </script>
