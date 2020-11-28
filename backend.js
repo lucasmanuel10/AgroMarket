@@ -34,22 +34,21 @@ function login(email, password) {
 
 function register(first_name, last_name, email, password, account_type) {
     var user = null;
-    var aux = email.split('@')[0];
-    try {
-        firebase.database().ref('users/' + aux).on('value', function(snapshot) {
-            user = snapshot.val; 
-         });
-    } catch (error) {
-        firebase.database().ref('users/' + aux).set({
-            FirstName: first_name,
-            LastName: last_name,
-            Email: email,
-            Password: password,
-            AccountType: account_type
-         });
-        return true;
-    }
-    return false;
+  
+    database.ref('users/' + email.split("@")[0]).on('value', function(snapshot) { 
+        user = snapshot.val; 
+    });
+    if(user == null)
+        return false;
+
+    firebase.database.ref('users/' + email).set({
+        FirstName: first_name,
+        LastName: last_name,
+        Email: email.split("@")[0],
+        Password: password,
+        AccountType: account_type
+     })
+    return true;
         
      
 }
