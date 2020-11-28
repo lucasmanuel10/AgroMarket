@@ -34,18 +34,22 @@ function register(first_name, last_name, email, password, account_type) {
     var user = null;
   
     firebase.database().ref('users/' + email.split("@")[0]).once('value').then(function(snapshot){
-        user = snapshot.val(); 
+        user = snapshot.val();
+        var x = true;
         if(user != null)
-            return false;
-        firebase.database().ref('users/' + email.split("@")[0]).set({
-            FirstName: first_name,
-            LastName: last_name,
-            Email: email,
-            Password: password,
-            AccountType: account_type,
-            ShoppingCart: []
-        });
-        return true;
+            x = false;
+        else {
+            firebase.database().ref('users/' + email.split("@")[0]).set({
+                FirstName: first_name,
+                LastName: last_name,
+                Email: email,
+                Password: password,
+                AccountType: account_type,
+                ShoppingCart: []
+            });
+            x = true;
+         } 
+        callback(x)
     });    
 }
 
