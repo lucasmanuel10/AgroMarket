@@ -24,7 +24,7 @@
 </head>
 <body>
   <nav class="navbar navbar-expand-lg" style="background-color: #E6E6FA;">
-    <a class="navbar-brand" href = "home-page.html"><img src="images/logo.png" height="50px"></a>
+    <a class="navbar-brand" onclick="passEmail()"><img src="images/logo.png" height="50px"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -221,7 +221,12 @@
               } else {
                 x.type = "password";
               }
-            }    
+            }  
+            
+            function passEmail(){
+            	var type = window.location.hash.substr(1);
+            	windows.location.href = "https://lucasmanuel10.github.io/AgroMarket/home-page.html#" + type;
+            }
         </script>
     
 	<footer class="page-footer font-small blue-grey lighten-5">
