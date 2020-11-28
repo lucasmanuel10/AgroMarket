@@ -127,11 +127,10 @@
     var email = window.location.hash.substr(1);
     var stock = document.getElementById('stock').value;
     var price = document.getElementById('price').value;
-    var kg = document.getElementById('kg').value;
     var category = document.getElementById('category').value;
     var market = document.getElementById('market').value;
     var image = document.getElementById('image').value;
-    sell_product(email, product_name, description, stock,price, kg, category,market, image, function(b){
+    sell_product(email, product_name, description, stock,price, category,market, image, function(b){
         if(b) {
           console.log("aqui deve se por o produto a mostra");
         }
