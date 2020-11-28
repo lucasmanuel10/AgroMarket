@@ -93,10 +93,10 @@ function get_products(callback) {
         console.log("chula homo" + products);
         if(products == null) {
             console.log("o chula é gay");
-            products_ = []; 
+            products_ = ["gay"]; 
             callback(products_);  
         } else {
-           var products_ = [];
+           var products_ = ["not gay"];
            snapshot.forEach(function(childSnapshot) {
                 products_.push(childSnapshot.val());
            }).then(function(){
