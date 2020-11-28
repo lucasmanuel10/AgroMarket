@@ -61,20 +61,28 @@ function get_products() {
     return products;
 }
 
+
 function get_products(category) {
-    var products = [];
-    for (var product in app.products) {
-        if(product.category == category)
-            products.push(product);
-    }
+    var products = null;
+    firebase.database().ref('products/' + category).on('value', function(snapshot) { 
+        products = snapshot.val; 
+    });
+    if (products == null)
+        return [];
     return products;
 }
 
-function get_products_ordered() {
-    var products = [];
-    for (var product in app.products) {
-        if(product.buyer_email == current_user.email)
-            products.push(product);
+function get_products_ordered(email) {
+    var products = null;
+    firebase.database().ref('products/').on('value', function(snapshot) { 
+        products = snapshot.val; 
+    });
+    if (products == null)
+        return [];
+    user_products = [];
+    for (product in products) {
+        if(product.Buyer == email.split("@")[0])
+            user_products.push(product);
     }
     return products;
 }
