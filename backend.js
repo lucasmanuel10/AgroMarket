@@ -20,16 +20,12 @@ firebase.analytics();
 
 function login(email, password) {
     var user = null;
-    try {
-        database.ref('users/' + email).on('value', function(snapshot) {
-            user = snapshot.val; 
-         });
-         if(user.Password!=password)
-            return false;
-    } catch (error) {
+    database.ref('users/' + email.split("@")[0]).on('value', function(snapshot) {
+        user = snapshot.val; 
+    });
+    if(user == null || user.Password!=password)
         return false;
-    }
-    return true;
+    return false;
 }
 
 function register(first_name, last_name, email, password, account_type) {
