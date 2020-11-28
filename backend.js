@@ -1,7 +1,7 @@
 var database = null;
 var current_user = null;
 
-const firebaseConfig = {
+var firebaseConfig = {
     apiKey: "AIzaSyA2JNM8baGJWfSa59WQd3-8P-9zqC9TV3U",
     authDomain: "projeto1-cbb1a.firebaseapp.com",
     databaseURL: "https://projeto1-cbb1a.firebaseio.com",
@@ -19,7 +19,7 @@ database = firebase.database();
 function login(email, password) {
     user = null;
     try {
-        database.ref('/users/' + email).on('value', function(snapshot) {
+        database.ref('users/' + email).on('value', function(snapshot) {
             user = snapshot.val; 
          });
          if(user.Password!=password)
@@ -33,11 +33,11 @@ function login(email, password) {
 function register(first_name, last_name, email, password, account_type) {
     user = null;
     try {
-        database.ref('/users/' + email).on('value', function(snapshot) {
+        database.ref('users/' + email).on('value', function(snapshot) {
             user = snapshot.val; 
          });
     } catch (error) {
-        database.ref('/users/' + email).set({
+        database.ref('users/' + email).set({
             FirstName: first_name,
             LastName: last_name,
             Email: email,
@@ -51,11 +51,6 @@ function register(first_name, last_name, email, password, account_type) {
      
 }
 
-function is_seller() {
-    if(current_user.account_type == "true")
-        return true;
-    return false;
-}
 
 function get_products() {
     var products = [];
