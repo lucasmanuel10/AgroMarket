@@ -22,8 +22,8 @@ firebase.analytics();
 function login(email, password) {
     var user = null;
     firebase.database().ref('users/' + email.split("@")[0]).once('value').then(function(snapshot){
-        user = snapshot.val();
-        console.log(user); 
+        user = snapshot.val();    
+    }).then(function(){
         if(user == null || user.Password!=password)
             return false;
         return true;
