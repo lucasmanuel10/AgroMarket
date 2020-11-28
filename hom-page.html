@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Início</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg" style="background-color: #E6E6FA;">
+			<a class="navbar-brand" href="#"><img src="images/logo.png" height="50px"></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="#">Inicio</a>
+					</li>
+				</ul>
+				<div>
+					<img src="images/empty-car-icon.png" height="40px">
+				</div> 
+				<div class="dropdown text-center">
+					<a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<img src="images/profile_photo.jpg" height="30px" alt=""><br>
+						<h7>Perfil</h7>
+					</a>
+					<div class="dropdown-menu my-dropdown-menu">
+						<a class="dropdown-item" href="#">Meu perfil</a>
+						<a class="dropdown-item" href="#">Historico de compras</a>
+						<hr>
+						<a class="dropdown-item" href="#">Sair</a>
+					</div>
+				</div>     
+			</div>    
+		</nav>
+
+    <div class="p-3 mb-2 text-dark"> <!--Isto vai estar em loop-->
+			<div class="row">
+				<div class="offset-md-2 col-md-8">
+					<div class="bg-light row border border-success">
+						<div class="col-md-4 my-3">
+							<img class="w-100" src="images/peanuts.jpg" height="200px" class="mr-3" alt="Amendoins">
+						</div>
+						<div class="col-md-8 my-3">
+							<button type="button" class="btn btn-success float-right">
+								<svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-cart-plus-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+									<path fill-rule="evenodd" d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM4 14a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm7 0a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+								</svg>
+							</button>
+							<h5>Amendoins</h5>
+							<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+							
+							<p class="mb-0"><b>Produtor:</b> Carlos Henriques</p>
+							<p class="mb-0"><b>Localização:</b> Mercado de Leiria</p>
+							<p><b>Preço: </b> 10 euros</p>  
+							<input type="number" id="quantity" name="quantity" value="0.2" step=0.01 min="0" max="10"> Kg
+							<a class="btn btn-success float-right" href="product.html#amendoins" role="button">Ver produto</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+</body>
+</html>
+
+<style>
+  .my-dropdown-menu {
+    left: -120px !important;
+  }
+
+</style>
