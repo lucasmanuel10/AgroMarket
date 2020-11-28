@@ -144,7 +144,7 @@
     console.log(email, product_name, description, stock, price, category, market, delivery);
     getBase64(function(image) {
       sell_product(email, product_name, description, stock, price, category, market, delivery, image, function(){
-        window.location.href = "https://lucasmanuel10.github.io/AgroMarket/home-page.html#" + email;
+        window.location.href = "https://lucasmanuel10.github.io/AgroMarket/product.html?produto="+product_name+"#"+email;
       })
     });
   }
