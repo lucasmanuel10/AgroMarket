@@ -88,11 +88,19 @@ function get_product(product_name, callback) {
 }
 
 function get_products(callback) {
-    firebase.database().ref('products/').once('value').then(function(snapshot){
-        callback(snapshot.val());
-        
+    firebase.database().ref('product/').once('value').then(function(snapshot){
+        var products = snapshot.val(); 
+        if(products == null) {
+            products_ = []; 
+            callback(products_);  
+        } else {
+           var products_ = [];
+           snapshot.forEach(function(childSnapshot) {
+                products_.push(childSnapshot.val());
+           })
+           callback(products_);
         }
-    );  
+    });  
 }
 
 
