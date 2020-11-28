@@ -22,3 +22,11 @@ function myProfile() {
   });
 }
 
+function sellItem() {
+  var email = window.location.hash.substr(1);
+  window.location.href = "https://lucasmanuel10.github.io/AgroMarket/addProduct.html#" + email;
+}
+
+
+
+
