@@ -75,7 +75,7 @@ function sell_product(email, product_name, description, stock,price, category,ma
         Image: image,
         Seller: email,
         Delivery: delivery 
-    }).then({
+    }).then(function(){
       callback();  
     });    
 }
