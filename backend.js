@@ -63,7 +63,7 @@ function is_seller(email, callback) {
     });
 }
 
-function sell_product(email, product_name, description, stock,price, category,market, image, callback) {
+function sell_product(email, product_name, description, stock,price, category,market, image) {
     firebase.database().ref('product/' + product_name).set({
         ProductName: product_name,
         Description: description,
@@ -118,4 +118,23 @@ function get_shopping_cart(email) {
         var cart = snapshot.val().cart; 
         callback(cart);
     });
+}
+
+function add_to_cart(email, product_name) {
+    firebase.database().ref('products/' + product_name).once('value').then(function(snapshot){
+        var stock = snapshot.val().Stock;
+        if(stock > 0 ) {
+            firebase.database().ref('users/' + email.split("@")[0]).once('value').then(function(snapshot) {
+                var cart = snapshot.val().cart; 
+                cart.push(product_name);
+                firebase.database().ref('users/' + email.split("@")[0]).set({
+                    Cart: cart
+                });
+                callback(cart);
+            });
+        } else {
+            var cart = [];
+            callback(cart);
+        }
+    });  
 }
