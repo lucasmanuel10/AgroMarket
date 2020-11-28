@@ -70,13 +70,20 @@
     var lname = document.getElementById('lnameId').value;
     var email = document.getElementById('emailId').value;
     var password = document.getElementById('passwordId').value;
-    var account_type = false;
+    var account_type = true;
     if(document.getElementById("seller_code").style.display == "none") {
-      account_type = true;
+      account_type = false;
     }
-    console.log("merda");
+    console.log("register_");
     var x = register(name, lname, email, password, account_type);
-    console.log(x);
+
+    register(name, lname, email, password, account_type, function(x) {
+      console.log(x);
+      if(x)
+        window.location.href = "https://lucasmanuel10.github.io/AgroMarket/home-page.html#" + email;
+      else
+        alert("email ou password ja registados");
+    });
   }
 </script>
 
