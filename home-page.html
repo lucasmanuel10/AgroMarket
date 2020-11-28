@@ -23,7 +23,7 @@
 
     <title>Início</title>
   </head>
-  <body onload="loadNavbar()">
+  <body onload="loadProducts()">
     <nav class="navbar navbar-expand-lg" style="background-color: #90EE90;">
 			<a class="navbar-brand" href="#"><img src="images/logo.png" height="50px"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -166,7 +166,8 @@
 </body>
 </html>
 <script>
-    function loadProducts() {   
+    function loadProducts() {  
+	    loadNavBar();
     const urlParams = new URLSearchParams(window.location.search);
     var email = urlParams.get('email').split("#");
     email = email[0];
