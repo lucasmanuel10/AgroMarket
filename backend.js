@@ -89,23 +89,12 @@ function get_product(product_name, callback) {
 
 function get_products(callback) {
     firebase.database().ref('products/').once('value').then(function(snapshot){
-        var products = snapshot.val();
-        console.log("chula homo" + products);
-        if(products == null) {
-            console.log("o chula é gay");
-            products_ = ["gay"]; 
-            callback(products_);  
-        } else {
-           var products_ = ["not gay"];
-           snapshot.forEach(function(childSnapshot) {
-                products_.push(childSnapshot.val());
-           }).then(function(){
-                console.log("mas mesmo gay" + products_);
-                callback(products_);
-           }); 
+        callback(snapshot.val());
+        
         }
-    });  
+    );  
 }
+
 
 
 function get_products(callback, category) {
