@@ -19,7 +19,7 @@ firebase.analytics();
 
 
 function login(email, password) {
-    user = null;
+    var user = null;
     try {
         database.ref('users/' + email).on('value', function(snapshot) {
             user = snapshot.val; 
@@ -33,13 +33,14 @@ function login(email, password) {
 }
 
 function register(first_name, last_name, email, password, account_type) {
-    user = null;
+    var user = null;
+    var aux = email.split('@')[0];
     try {
-        firebase.database().ref('users/' + email).on('value', function(snapshot) {
+        firebase.database().ref('users/' + aux).on('value', function(snapshot) {
             user = snapshot.val; 
          });
     } catch (error) {
-        firebase.database().ref('users/' + email).set({
+        firebase.database().ref('users/' + aux).set({
             FirstName: first_name,
             LastName: last_name,
             Email: email,
