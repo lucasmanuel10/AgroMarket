@@ -17,33 +17,38 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg" style="background-color: #E6E6FA;">
-      <a class="navbar-brand" href="#"><img src="images/logo.png" height="50px"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Inicio</a>
-          </li>
-        </ul>
-        <div>
-          <img src="images/empty-car-icon.png" height="40px">
-        </div> 
-        <div class="dropdown text-center">
-          <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src="images/profile_photo.jpg" height="30px" alt=""><br>
-            <h7>Perfil</h7>
-          </a>
-          <div class="dropdown-menu my-dropdown-menu">
-            <a class="dropdown-item" href="#">Meu perfil</a>
-            <a class="dropdown-item" href="#">Historico de compras</a>
-          </div>
-        </div>     
-      </div>    
-    </nav>
+    <nav class="navbar navbar-expand-lg" style="background-color: #90EE90;">
+			<a class="navbar-brand" href="#"><img src="images/logo.png" height="50px"></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link text-dark" href="#"><b>Início</b></a>
+					</li>
+				</ul>
+				<div class="mr-3">
+					<button onclick="sellItem()" id="sellId" class="btn btn-primary btn-success" role="button" style="display: none">Vender</button>
+				</div>
+				<div>
+					<a href="https://lucasmanuel10.github.io/AgroMarket/my-shopping-cart.html"> <img src="images/empty-car-icon.png" height="40px"> </a> 
+				</div> 
+				<div class="dropdown text-center">
+					<a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<img src="images/profile_photo.jpg" height="30px" alt=""><br>
+						<h7 class="text-dark">Perfil</h7>
+					</a>
+					<div class="dropdown-menu my-dropdown-menu">
+						<a class="dropdown-item" onclick="myProfile()" style="cursor: pointer;">Meu perfil</a>
+						<a class="dropdown-item" href="#">Histórico de compras</a>
+						<hr>
+						<a class="dropdown-item" href="#">Sair</a>
+					</div>
+				</div>     
+			</div>    
+		</nav>
 
     <div class="mt-5">
       <div class="offset-md-2 col-md-8 py-3" style="background-color: #F8F8FF">
