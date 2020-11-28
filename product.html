@@ -80,6 +80,7 @@
     var product_name = myParam[0];
     var email = myParam[1];
     get_product(product_name, function(p) {
+	console.log(p);
       var img = '<img class="w-100" src='+p.Image+' alt="">'
       document.getElementById("imageId").innerHTML = img;
 
