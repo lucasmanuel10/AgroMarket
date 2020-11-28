@@ -35,13 +35,13 @@ function login(email, password) {
 function register(first_name, last_name, email, password, account_type) {
     var user = null;
   
-    firebase.database.ref('users/' + email.split("@")[0]).on('value', function(snapshot) { 
+    firebase.database().ref('users/' + email.split("@")[0]).on('value', function(snapshot) { 
         user = snapshot.val; 
     });
     if(user == null)
         return false;
 
-    firebase.database.ref('users/' + email).set({
+    firebase.database().ref('users/' + email).set({
         FirstName: first_name,
         LastName: last_name,
         Email: email.split("@")[0],
