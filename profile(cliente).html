@@ -32,7 +32,7 @@
 </head>
 <body>
   <nav class="navbar navbar-expand-lg" style="background-color: #E6E6FA;">
-    <a class="navbar-brand" onclick="passEmail()"><img src="images/logo.png" height="50px"></a>
+    <a class="navbar-brand" onclick="passEmail()" style="cursor:pointer"><img src="images/logo.png" height="50px"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -75,11 +75,11 @@
           <p class="card-text"><strong>Password:</strong> ******* <button type="button" class="btn btn-success btn-sm" style="float: right" data-toggle="modal" data-target="#exampleModalPassword">Alterar Password</button></p>
           <hr>
           <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios" onclick = "document.location.href='profile(vendedor).html'">>
+            <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios" onclick ="passVendedor()">
               <label class="custom-control-label" for="defaultUnchecked">Perfil de Vendedor</label>
           </div>
           <hr>
-         <button class="btn btn-success btn-sm btn-block" onclick = "document.location.href='home-page.html'">Guardar Alterações</button>
+         <button class="btn btn-success btn-sm btn-block" onclick ="passEmail()">Guardar Alterações</button>
       </div>
     </div>
   </div>
@@ -234,6 +234,11 @@
             function passEmail(){
             	var type = window.location.hash.substr(1);
             	window.location.href = "https://lucasmanuel10.github.io/AgroMarket/home-page.html#" + type;
+            }
+            
+            function passVendedor(){
+            	var type = window.location.hash.substr(1);
+            	window.location.href = "https://lucasmanuel10.github.io/AgroMarket/profile(vendedor).html#" + type;
             }
         </script>
     

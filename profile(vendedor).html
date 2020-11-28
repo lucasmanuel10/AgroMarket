@@ -32,7 +32,7 @@
 </head>
 <body>
   <nav class="navbar navbar-expand-lg" style="background-color: #E6E6FA;">
-    <a class="navbar-brand" href = "home-page.html"><img src="images/logo.png" height="50px"></a>
+    <a class="navbar-brand" onclick = "passEmail()" style="cursor:pointer"><img src="images/logo.png" height="50px"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -75,7 +75,7 @@
           <p class="card-text"><strong>Password:</strong> ******* <button type="button" class="btn btn-success btn-sm" style="float: right" data-toggle="modal" data-target="#exampleModalPassword">Alterar Password</button></p>
           <hr>
           <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" onclick = "document.location.href='profile(cliente).html'" checked>
+            <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" onclick = "passCliente()" checked>
               <label class="custom-control-label" for="defaultChecked">Perfil de Vendedor</label>
           </div>
           <br>
@@ -321,6 +321,16 @@
                   container.parentNode.removeChild(div);
                 }
               }
+            
+            function passEmail(){
+            	var type = window.location.hash.substr(1);
+            	window.location.href = "https://lucasmanuel10.github.io/AgroMarket/home-page.html#" + type;
+            }
+            
+            function passCliente(){
+            	var type = window.location.hash.substr(1);
+            	window.location.href = "https://lucasmanuel10.github.io/AgroMarket/profile(cliente).html#" + type;
+            }
         </script>
           
         <!-- Modal Nº Vendedor -->
@@ -382,7 +392,7 @@
         </div>
           
           <hr>
-          <button class="btn btn-success btn-sm btn-block" onclick = "document.location.href='home-page.html'">Guardar Alterações</button>
+          <button class="btn btn-success btn-sm btn-block" onclick = "passEmail()">Guardar Alterações</button>
       </div>
     </div>
   </div>
