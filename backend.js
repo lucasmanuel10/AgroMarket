@@ -100,7 +100,7 @@ function get_products(callback) {
            snapshot.forEach(function(childSnapshot) {
                 products_.push(childSnapshot.toJSON());
            }); 
-           callback(products);    
+           callback(products_);    
         }
     });  
 }
