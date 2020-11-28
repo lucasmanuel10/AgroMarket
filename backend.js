@@ -64,7 +64,7 @@ function is_seller(email, callback) {
     });
 }
 
-function sell_product(email, product_name, description, stock,price, category,market, delivery, image) {
+function sell_product(email, product_name, description, stock,price, category,market, delivery, image, callback) {
     firebase.database().ref('product/' + product_name).set({
         ProductName: product_name,
         Description: description,
@@ -75,7 +75,9 @@ function sell_product(email, product_name, description, stock,price, category,ma
         Image: image,
         Seller: email,
         Delivery: delivery 
-    });     
+    }).then({
+      callback();  
+    })    
 }
 
 function get_products(callback) {
