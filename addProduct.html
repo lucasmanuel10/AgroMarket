@@ -129,13 +129,25 @@
     var price = document.getElementById('price').value;
     var category = document.getElementById('category').value;
     var market = document.getElementById('market').value;
-    var image = document.getElementById('image').value;
+    var image = getBase64(document.getElementById('image').value);
     sell_product(email, product_name, description, stock,price, category,market, image, function(b){
         if(b) {
           console.log("aqui deve se por o produto a mostra");
         }
     })
   }
+  
+  function getBase64(file) {
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+     console.log(reader.result);
+     return reader.result;
+    };
+    reader.onerror = function (error) {
+     console.log('Error: ', error);
+    };
+   }
 </script>
 
 <style>
