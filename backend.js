@@ -22,13 +22,14 @@ firebase.analytics();
 function login(email, password) {
     var user = null;
     firebase.database().ref('users/' + email.split("@")[0]).once('value').then(function(snapshot){
-        user = snapshot.val(); 
+        user = snapshot.val();
+        console.log(user); 
+        if(user == null || user.Password!=password)
+            return false;
+        return true;
     });
-    console.log(user);
-    if(user == null || user.Password!=password)
-        return false;
-    return true;
 }
+
 
 function register(first_name, last_name, email, password, account_type) {
     var user = null;
