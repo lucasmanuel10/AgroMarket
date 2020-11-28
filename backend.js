@@ -90,9 +90,16 @@ function get_product(product_name, callback) {
 function get_products(callback) {
     firebase.database().ref('products/').once('value').then(function(snapshot){
         var products = snapshot.val(); 
-        if(products == null)
-            products = []; 
-        callback(products);  
+        if(products == null) {
+            products_ = []; 
+            callback(products_);  
+        } else {
+           var products_ = [];
+           snapshot.forEach(function(childSnapshot) {
+                products_.push(childSnapshot.val());
+           });
+           callback(products_);
+        }
     });  
 }
 
