@@ -35,11 +35,11 @@ function login(email, password) {
 function register(first_name, last_name, email, password, account_type) {
     user = null;
     try {
-        firebase.analytics().ref('users/' + email).on('value', function(snapshot) {
+        firebase.database().ref('users/' + email).on('value', function(snapshot) {
             user = snapshot.val; 
          });
     } catch (error) {
-        firebase.analytics().ref('users/' + email).set({
+        firebase.database().ref('users/' + email).set({
             FirstName: first_name,
             LastName: last_name,
             Email: email,
