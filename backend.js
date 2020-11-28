@@ -98,9 +98,8 @@ function get_products(callback) {
            var products_ = [];
            snapshot.forEach(function(childSnapshot) {
                 products_.push(childSnapshot.val());
-           }).then(function(){
-                callback();  
-            });    
+                callback(products); 
+           });    
         }
     });  
 }
