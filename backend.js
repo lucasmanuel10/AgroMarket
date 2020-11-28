@@ -45,8 +45,7 @@ function register(first_name, last_name, email, password, account_type, callback
                 Email: email,
                 Password: password,
                 AccountType: account_type,
-                ShoppingCart: [],
-                SellingCart: []
+                Cart: []
             });
             x = true;
          } 
@@ -72,60 +71,51 @@ function sell_product(email, product_name, description, stock,price, category,ma
         Price: price,
         Category: category,
         Market: market,
-        Image: image
-    });
-    firebase.database().ref('users/' + email.split("@")[0]).once('value').then(function(snapshot) {
-        var x = snapshot.val().SellingCart;
-        x.push(product_name);
-        firebase.database().ref('users/' + email.split("@")[0]).set({
-            ShoppingCart: x
-        });
-        callback(x);  
-    });      
+        Image: image,
+        Seller: email,
+        Buyer: ""
+    });     
 }
-function get_products() {
-    var products = null;
+
+function get_products(callback) {
     firebase.database().ref('products/').once('value').then(function(snapshot){
-        products = snapshot.val(); 
-        if (products == null)
-            return [];
-        return products;
+        var products = snapshot.val(); 
+        if(products == null)
+            products = []; 
+        callback(products);  
     });  
 }
 
 
-function get_products(category) {
-    var products = null;
+function get_products(callback, category) {
     firebase.database().ref('products/' + category).once('value').then(function(snapshot){
-        products = snapshot.val(); 
-        if (products == null)
-            return [];
-        return products;
-    });   
+        var products = snapshot.val(); 
+        if(products == null)
+            products = []; 
+        callback(products);  
+    });  
 }
 
 function get_products_ordered(email) {
-    var products = null;
     firebase.database().ref('products/').once('value').then(function(snapshot){
-        products = snapshot.val();
+        var products = snapshot.val();
         if (products == null)
-            return [];
-        user_products = [];
-        for (product in products) {
-            if(product.Buyer == email.split("@")[0])
-                user_products.push(product);
+            products = [];
+        else {
+            var user_products = [];
+            for (product in products) {
+                if(product.Buyer == email.split("@")[0])
+                    user_products.push(product);
+            }
+            products = user_products;
         }
-        return products; 
+        callback(products);
     });
 }
 
 function get_shopping_cart(email) {
     firebase.database().ref('users/' + email.split("@")[0]).once('value').then(function(snapshot) {
-        var user = snapshot.val(); 
-        if(user == null)
-            return [];
-        return user.cart;
+        var cart = snapshot.val().cart; 
+        callback(cart);
     });
 }
-
-
