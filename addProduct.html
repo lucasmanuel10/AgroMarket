@@ -2,18 +2,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Adicionar produto</title>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
-    
-    <script src="backend.js"></script>
-    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
@@ -22,7 +16,7 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-    
+
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
@@ -31,7 +25,7 @@
         </ul>
         <div>
           <img src="images/empty-car-icon.png" height="40px">
-        </div> 
+        </div>
         <div class="dropdown text-center">
           <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <img src="images/profile_photo.jpg" height="30px" alt=""><br>
@@ -41,8 +35,8 @@
             <a class="dropdown-item" href="#">Meu perfil</a>
             <a class="dropdown-item" href="#">Historico de compras</a>
           </div>
-        </div>     
-      </div>    
+        </div>
+      </div>
     </nav>
 
     <div class="mt-5">
@@ -52,62 +46,67 @@
         <form>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text">Nome do produto</span>
+              <span class="input-group-text" id="product_name">Nome do produto</span>
             </div>
-            <input id="product_name" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <label class="input-group-text">Categorias</label>
+              <label class="input-group-text" id="category">Categorias</label>
             </div>
-            <select id="category" class="custom-select" id="inputGroupSelect01">
+            <select class="custom-select" id="inputGroupSelect01">
               <option selected>Escolha a categoria</option>
-              <option value="Frutos Secos">Frutos Secos</option>
-              <option value="Legumes">Legumes</option>
-              <option value="Produtos animais">Produtos animais</option>
-              <option value="Leguminosas">Leguminosas</option>
-              <option value="Frutas">Frutas</option>
+              <option value="1">Frutos Secos</option>
+              <option value="2">Legumes</option>
+              <option value="3">Produtos animais</option>leguminosas
+              <option value="3">Leguminosas</option>
+              <option value="4">Frutas</option>
             </select>
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text">Descrição</span>
+              <span class="input-group-text" id="description">Descrição</span>
             </div>
-            <input id="description" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <label class="input-group-text">Localização</label>
+              <label class="input-group-text" id="market">Localização</label>
             </div>
-            <select id="market" class="custom-select" id="inputGroupSelect01">
-              <option selected>Escolher Localização</option>
-              <option value="Mercado de Monchique">Mercado de Monchique</option>
-              <option value="Mercado de Lisboa">Mercado de Lisboa</option>
-              <option value="Mercado da Caparica">Mercado da Caparica</option>
-              <option value="Mercado de Portimão">Mercado de Portimão</option>
+            <select class="custom-select" id="inputGroupSelect01">
+              <option selected>Choose...</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
             </select>
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text">Quantidade em kg</span>
+              <span class="input-group-text" id="stock">Quantidade em kg</span>
             </div>
-            <input id="stock" type="number" step="0.01" min="0" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            <input type="number" step="0.01" min="0" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text">Preço em euros</span>
+              <span class="input-group-text" id="price">Preço em euros</span>
             </div>
-            <input id="price" type="number" step="0.01" min="0"  class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            <input type="number" step="0.01" min="0"  class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
           </div>
-          <input type="file" class="form-control-file" id="image">
+          <div>
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="price">Imagem</span>
+              <input type="file" class="ml-3 mt-1 form-control-file" id="exampleFormControlFile1">
+            </div>
+          </div>
           <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="delivery" onclick="myFunction()">
-            <label class="form-check-label" for="exampleCheck1">Entrega ao domicilio</label>
+            <input type="checkbox" class="form-check-input" id="exampleCheck1" onclick="myFunction()">
+            <label class="form-check-label" for="exampleCheck1">Entrega ao domicílio</label>
           </div>
         </form>
       </div>
       <div class="my-3 offset-md-2 col-md-8">
         <button type="button" class="btn btn-primary btn-block" onclick="addProduct()">Adicionar produto</button>
+        <button onclick="getBase64()">ESTE AQUI</button>
       </div>
     </div>
 </body>
@@ -130,15 +129,18 @@
     var price = document.getElementById('price').value;
     var category = document.getElementById('category').value;
     var market = document.getElementById('market').value;
-    var delivery = $('#delivery').is(":checked");
-    console.log(email, product_name, description, stock, price, category, market, delivery);
     getBase64(function(image) {
-      sell_product(email, product_name, description, stock, price, category, market, delivery, image, function(){
-        window.location.href = "https://lucasmanuel10.github.io/AgroMarket/home-page.html#" + email;
-      })
+      console.log(image);
+      sell_product(email, product_name, description, stock, price, category,market, image, function(b){
+        if(b) {
+          console.log("aqui deve se por o produto a mostra");
+        } else {
+          alert("erro na adicao do produto");
+        }
+      });
     });
   }
-  
+
   function getBase64(callback) {
     var fileInput = document.getElementById('image');
     console.log(fileInput);
@@ -149,7 +151,7 @@
     reader.onload = function () {
       callback(reader.result);
     };
-    
+
     reader.onerror = function (error) {
       console.log('Error: ', error);
     };
