@@ -200,6 +200,8 @@
         var x = '';
 	    console.log(products);
         for(p in products) {
+            console.log(p);
+            console.log(p.Seller);
             x += '<div class="p-3 mb-2 text-dark" id="produtos"><div class="row"><div class="offset-md-2 col-md-8"><div class="bg-light row border border-success"><div class="col-md-4 my-3"><img class="w-100" src=' + p.Image + ' height="200px" class="mr-3"></div><div class="col-md-8 my-3"><button type="button" class="btn btn-success float-right"><svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-cart-plus-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM4 14a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm7 0a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/></svg></button><h5>' + p.ProductName + '</h5><p>' + p.Description + '</p><p class="mb-0"><b>Produtor:</b> ' + p.Seller + '</p><p class="mb-0"><b>Localização:</b> '+ p.Market +'</p><p><b>Preço p/kg: </b> '+ p.Price +' €</p><input type="number" id="quantity" name="quantity" value="0.2" step=0.01 min="0" max="10"> Kg<a class="btn btn-success float-right" href="product.html?produto=' + p.ProductName +'#' + p.Seller +' role="button">Ver produto</a></div></div></div></div></div>';
         }
 	document.getElementById("produtos").innerHTML = x;
