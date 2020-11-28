@@ -98,14 +98,16 @@ function get_products(callback) {
            var products_ = [];
            snapshot.forEach(function(childSnapshot) {
                 products_.push(childSnapshot.val());
-           }).then(callback(products_));
+           }).then(function(){
+                callback();  
+            });    
         }
     });  
 }
 
 
 
-function get_products(callback, category) {
+function get_products_(callback, category) {
     firebase.database().ref('products/' + category).once('value').then(function(snapshot){
         var products = snapshot.val(); 
         if(products == null)
