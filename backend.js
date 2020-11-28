@@ -54,6 +54,16 @@ function register(first_name, last_name, email, password, account_type, callback
     });    
 }
 
+function is_seller(email, callback) {
+    firebase.database().ref('users/' + email.split("@")[0]).once('value').then(function(snapshot) {
+        var x = true;
+        var user= snapshot.val();
+        if(user.AccountType != true)
+            x = false;
+        callback(x);
+    });
+}
+
 function get_products() {
     var products = null;
     firebase.database().ref('products/').once('value').then(function(snapshot){
