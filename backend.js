@@ -38,13 +38,13 @@ function register(first_name, last_name, email, password, account_type) {
     firebase.database().ref('users/' + email.split("@")[0]).on('value', function(snapshot) { 
         user = snapshot.val; 
     });
-    if(user == null)
+    if(user != null)
         return false;
 
-    firebase.database().ref('users/' + email).set({
+    firebase.database().ref('users/' + email.split("@")[0]).set({
         FirstName: first_name,
         LastName: last_name,
-        Email: email.split("@")[0],
+        Email: email,
         Password: password,
         AccountType: account_type
      })
