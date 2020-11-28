@@ -1,8 +1,7 @@
 var database = null;
 var current_user = null;
-const firebaseConfig = null;
 
-firebaseConfig = {
+const firebaseConfig = firebaseConfig = {
     apiKey: "AIzaSyA2JNM8baGJWfSa59WQd3-8P-9zqC9TV3U",
     authDomain: "projeto1-cbb1a.firebaseapp.com",
     databaseURL: "https://projeto1-cbb1a.firebaseio.com",
