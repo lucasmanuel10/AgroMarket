@@ -26,11 +26,11 @@ function login(email, password, callback) {
         var x = true;
         if(user == null || user.Password!=password)
             x = false;
-        callback(x)
+        callback(x);
     });
 }
 
-function register(first_name, last_name, email, password, account_type) {
+function register(first_name, last_name, email, password, account_type, callback) {
     var user = null;
   
     firebase.database().ref('users/' + email.split("@")[0]).once('value').then(function(snapshot){
@@ -45,14 +45,14 @@ function register(first_name, last_name, email, password, account_type) {
                 Email: email,
                 Password: password,
                 AccountType: account_type,
-                ShoppingCart: []
+                ShoppingCart: [],
+                SellingCart: []
             });
             x = true;
          } 
-        callback(x)
+        callback(x);
     });    
 }
-
 
 function get_products() {
     var products = null;
