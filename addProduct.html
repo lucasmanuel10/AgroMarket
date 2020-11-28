@@ -1,0 +1,152 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg" style="background-color: #E6E6FA;">
+      <a class="navbar-brand" href="#"><img src="images/logo.png" height="50px"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Inicio</a>
+          </li>
+        </ul>
+        <div>
+          <img src="images/empty-car-icon.png" height="40px">
+        </div> 
+        <div class="dropdown text-center">
+          <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="images/profile_photo.jpg" height="30px" alt=""><br>
+            <h7>Perfil</h7>
+          </a>
+          <div class="dropdown-menu my-dropdown-menu">
+            <a class="dropdown-item" href="#">Meu perfil</a>
+            <a class="dropdown-item" href="#">Historico de compras</a>
+          </div>
+        </div>     
+      </div>    
+    </nav>
+
+    <div class="mt-5">
+      <div class="offset-md-2 col-md-8 py-3" style="background-color: #F8F8FF">
+        <h4 class="text-center">Colocar produto à venda</h4>
+        <hr>
+        <form>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Nome do produto</span>
+            </div>
+            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Categorias</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01">
+              <option selected>Choose...</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Descrição</span>
+            </div>
+            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Localização</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01">
+              <option selected>Choose...</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Quantidade em kg</span>
+            </div>
+            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Preço em euros</span>
+            </div>
+            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Imagem</span>
+            </div>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="inputGroupFile01">
+              <label class="custom-file-label" for="inputGroupFile01">Escolher Imagem</label>
+            </div>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1" onclick="myFunction()">
+            <label class="form-check-label" for="exampleCheck1">Entrega ao domicilio</label>
+          </div>
+        </form>
+      </div>
+      <div class="my-3 offset-md-2 col-md-8">
+        <button type="button" class="btn btn-primary btn-block">Adicionar produto</button>
+      </div>
+    </div>
+</body>
+</html>
+
+<script>
+  function myFunction() {
+    if(document.getElementById("seller_code").style.display == "none") {
+      document.getElementById("seller_code").style.display = "block";
+    } else {
+      document.getElementById("seller_code").style.display = "none";
+    }
+  }
+
+  function register_() {
+    var name = document.getElementById('nameId').value;
+    var lname = document.getElementById('lnameId').value;
+    var email = document.getElementById('emailId').value;
+    var password = document.getElementById('passwordId').value;
+    var account_type = false;
+    if(document.getElementById("seller_code").style.display == "none") {
+      account_type = true;
+    }
+    console.log("merda");
+    register(name, lname, email, password, account_type);
+  }
+</script>
+
+<style>
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+.my-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+</style>
