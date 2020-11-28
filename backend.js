@@ -80,6 +80,13 @@ function sell_product(email, product_name, description, stock,price, category,ma
     });    
 }
 
+function get_product(product_name, callback) {
+    firebase.database().ref('product/' + product_name).once('value').then(function(snapshot){
+        var product = snapshot.val();
+        callback(product);
+    });
+}
+
 function get_products(callback) {
     firebase.database().ref('products/').once('value').then(function(snapshot){
         var products = snapshot.val(); 
