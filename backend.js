@@ -1,19 +1,21 @@
 var database = null;
 var current_user = null;
 
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 var firebaseConfig = {
-    apiKey: "AIzaSyA2JNM8baGJWfSa59WQd3-8P-9zqC9TV3U",
-    authDomain: "projeto1-cbb1a.firebaseapp.com",
-    databaseURL: "https://projeto1-cbb1a.firebaseio.com",
-    projectId: "projeto1-cbb1a",
-    storageBucket: "projeto1-cbb1a.appspot.com",
-    messagingSenderId: "366062903132",
-    appId: "1:366062903132:web:f319507ffa693e32fd2b99",
-    measurementId: "G-T5155MKZ4N"
+    apiKey: "AIzaSyBSnUkR2G22khdwPxWkJ3AdY1PmmuiKFpw",
+    authDomain: "fir-js-67501.firebaseapp.com",
+    databaseURL: "https://fir-js-67501.firebaseio.com",
+    projectId: "fir-js-67501",
+    storageBucket: "fir-js-67501.appspot.com",
+    messagingSenderId: "367010020114",
+    appId: "1:367010020114:web:b21f92d0652acdb17111cb",
+    measurementId: "G-30WDYQMQLB"
 };
+// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
-database = firebase.database();
 
 
 function login(email, password) {
@@ -33,11 +35,11 @@ function login(email, password) {
 function register(first_name, last_name, email, password, account_type) {
     user = null;
     try {
-        database.ref('users/' + email).on('value', function(snapshot) {
+        firebase.analytics().ref('users/' + email).on('value', function(snapshot) {
             user = snapshot.val; 
          });
     } catch (error) {
-        database.ref('users/' + email).set({
+        firebase.analytics().ref('users/' + email).set({
             FirstName: first_name,
             LastName: last_name,
             Email: email,
