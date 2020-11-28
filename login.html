@@ -61,6 +61,7 @@ body {
     var email = document.getElementById('emailId').value;
     var password = document.getElementById('passwordId').value;
     var x = login(email, password);
+    console.log(x);
     if(x)
       window.location.href = "/home-page.html#"+email;
     else
