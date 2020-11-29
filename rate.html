@@ -21,7 +21,7 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body onload="loadProduct()">
+<body onload="loadOrderProducts()">
   <nav class="navbar navbar-expand-lg" style="background-color: #90EE90;">
 			<a class="navbar-brand" onclick="homepage()" style="cursor: pointer;"><img src="images/logo.png" height="50px"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,44 +58,12 @@
 
     <div class="mt-5">
       <div class="offset-md-2 col-md-8 pt-5 pb-5 pl-5 pr-5 bg-light">
-        <h2 class="text-center">ENCOMENDA #X</h2>
+        <h2 class="text-center" id="title">ENCOMENDA #X</h2>
 
         <hr>
 
         <div>
-          <div class="row mx-3">
-            <img src="images/peanuts.jpg" height="50px">
-            <div class="col-sm small">
-              <p class="mb-0"><b>Produto: </b> Amendoins</p>
-              <p class="mb-0"><b>Produtor: </b> Carlos Henriques</p>
-              <p class="mb-0"><b>Quantidade: </b>200 g</p>
-              <p class="mb-0"><b>Preço: </b> 5€ </p>
-            </div>
-            <div class=" text-center col-sm stars">
-              <div>
-                <p class="mb-0">Avaliar produto</p>
-                <span>
-                  <span class="fa fa-star" id="1" onclick="checkStars()"></span>
-                  <span class="fa fa-star" id="2" onclick="checkStars()"></span>
-                  <span class="fa fa-star" id="3" onclick="checkStars()"></span>
-                  <span class="fa fa-star" id="4" onclick="checkStars()"></span>
-                  <span class="fa fa-star" id="5" onclick="checkStars()"></span>
-                </span>
-              </div>
-              <div class="mt-3">
-                <p class="mb-0">Avaliar produtor</p>
-                <span>
-                  <span class="fa fa-star" id="1" onclick="checkStars()"></span>
-                  <span class="fa fa-star" id="2" onclick="checkStars()"></span>
-                  <span class="fa fa-star" id="3" onclick="checkStars()"></span>
-                  <span class="fa fa-star" id="4" onclick="checkStars()"></span>
-                  <span class="fa fa-star" id="5" onclick="checkStars()"></span>
-                </span>
-              </div>
-            </div>
-            <button type="button" class="btn btn-success mr-4">Submeter</button>
-          </div>
-          <hr>
+
           <div class="row mx-3">
             <img src="images/peanuts.jpg" height="50px">
             <div class="col-sm small">
@@ -158,6 +126,58 @@
 </style>
 
 <script>
+  function loadOrderProducts() {
+    var email = window.location.hash.substr(1);
+    var order = window.location.hash.substr(3);
+    document.getElementById("title").innerHTML = '<h2 class="text-center" id="title"> ENCOMENDA #'+ order +'</h2>';
+    get_order_history(email, order, function(products) {
+      for(p in products){
+        var produto = products[p].ProductName;
+        var produtor = products[p].Seller;
+        var quantidade = ""+products[p].Quantity;
+        var src = products[p].Image;
+        var preco = products[p].Price * quantidade;
+
+        var x = '<div class="row mx-3">
+          <img src="'+src+'" height="50px">
+          <div class="col-sm small">
+            <p class="mb-0"><b>Produto: </b>'+produto+'</p>
+            <p class="mb-0"><b>Produtor: </b>'+produtor+'</p>
+            <p class="mb-0"><b>Quantidade: </b>'+quantidade+'kg</p>
+            <p class="mb-0"><b>Preço: </b>'+ preco +'€</p>
+          </div>
+          <div class=" text-center col-sm stars">
+            <div>
+              <p class="mb-0">Avaliar produto</p>
+              <span>
+                <span class="fa fa-star" id="1" onclick="checkStars()"></span>
+                <span class="fa fa-star" id="2" onclick="checkStars()"></span>
+                <span class="fa fa-star" id="3" onclick="checkStars()"></span>
+                <span class="fa fa-star" id="4" onclick="checkStars()"></span>
+                <span class="fa fa-star" id="5" onclick="checkStars()"></span>
+              </span>
+            </div>
+            <div class="mt-3">
+              <p class="mb-0">Avaliar produtor</p>
+              <span>
+                <span class="fa fa-star" id="1" onclick="checkStars()"></span>
+                <span class="fa fa-star" id="2" onclick="checkStars()"></span>
+                <span class="fa fa-star" id="3" onclick="checkStars()"></span>
+                <span class="fa fa-star" id="4" onclick="checkStars()"></span>
+                <span class="fa fa-star" id="5" onclick="checkStars()"></span>
+              </span>
+            </div>
+          </div>
+          <button type="button" class="btn btn-success mr-4">Submeter</button>
+        </div>
+        <hr>';
+      }
+      document.getElementById("encomendas").innerHTML = x;
+
+    })
+  }
+
+
   function checkStars() {
     var product = event.target.parentNode;
     var clickedStar = event.target;
