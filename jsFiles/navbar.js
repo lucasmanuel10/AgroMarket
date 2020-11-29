@@ -7,6 +7,7 @@ function loadNavbar() {
       document.getElementById("sellId").style.display = "block";
     }
   });
+  shoppingCart(email)
 };
 
 function myProfile() {
