@@ -14,11 +14,12 @@
   <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
 	
   <script src="jsFiles/navbar.js"></script>
+  <script src="backend.js"></script>
   
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 </head>
-<body>
+<body onload="loadCompra()">
   <nav class="navbar navbar-expand-lg" style="background-color: #90EE90;">
 			<a class="navbar-brand" onclick="homepage()" style="cursor: pointer;"><img src="images/logo.png" height="50px"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,7 +54,7 @@
 		</nav>
   <div class="mt-5 container">
     <div class="row">
-      <div class="col-md-8 pt-5 pb-5 pl-5 pr-5" style="background-color: #F8F8FF;">
+      <div class="col-md-8 pt-5 pb-5 pl-5 pr-5 bg-light">
         <h2 class="text-center">CHECKOUT</h2>
         <hr>
         <div class="row">
@@ -138,34 +139,25 @@
             </div>
             <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
           </div>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <label class="input-group-text" for="inputGroupSelect01">Mercado</label>
-            </div>
-            <select class="custom-select" id="inputGroupSelect01">
-              <option selected>Escolha...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-          </div>
         </div>
       </div>
 
       
       
       <div class="col-md-3 ml-5" >
-        <div class="py-3" style="background-color: #F8F8FF;">
+        <div class="py-3 bg-light">
           <h5 class="text-center">A tua compra:</h5>
-          <hr>
-          <div class="ml-2"> <!--Vai estar em loop tbem-->
-            <p class="mb-0"><b>Produto: </b>Batatas</p>
-            <p class="mb-0"><b>Quantidade: </b>dsfdsfds</p>
-            <p class="mb-0"><b>Preço: </b>dsfdsfds</p>
+          <div id="productsId">
+            <hr>
+            <div class="ml-2"> <!--Vai estar em loop tbem-->
+              <p class="mb-0"><b>Produto: </b>Batatas</p>
+              <p class="mb-0"><b>Quantidade: </b>dsfdsfds</p>
+              <p class="mb-0"><b>Preço: </b>dsfdsfds</p>
+            </div>
+            <hr>
           </div>
-          <hr>
-          <div class="ml-2">
-            <p><b>Total: </b>10 euros</p>
+          <div id="total" class="ml-2">
+            
           </div>
         </div>
       </div>
@@ -173,7 +165,7 @@
     </div>
     
     <div class="col-md-8 my-3 pr-4">
-      <a href="payment.html" class="btn btn-primary btn-block" role="button">Pagar</a>
+      <a href="payment.html" class="btn btn-success btn-block" role="button">Pagar</a>
     </div>
   </div>
 </body>
@@ -193,5 +185,25 @@
   function checkedMarket() {
     document.getElementById("idHome").style.display = "none";
     document.getElementById("idMarket").style.display = "block";    
+  }
+  function loadCompra() {
+    var email = window.location.hash.substr(1);
+    var total = 0;
+    var x = '';
+    get_shopping_cart(email, function(products){
+      for(p in products) {
+        var produto = products[p].ProductName;
+        var localizacao = products[p].Market;
+        var quantidade = ""+products[p].Quantity;
+        var preco = products[p].Price * quantidade;
+        total += preco;
+
+        x += '<hr><div class="ml-2"><p class="mb-0"><b>Produto: </b>'+produto+'</p><p class="mb-0"><b>Quantidade: </b>'+quantidade+'</p><b>Mercado: </b>'+localizacao+'</p><p class="mb-0"><b>Preço: </b>'+preco+'</p></div><hr>';
+      }
+      document.getElementById("productsId").innerHTML = x;
+
+      y = '<p><b>Total: </b>'+total+' euros</p>'
+      document.getElementById("total").innerHTML = y;
+    });
   }
 </script>
