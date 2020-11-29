@@ -498,7 +498,7 @@
  
  document.getElementById("plusAgenda").onclick = function() {
 	 if((document.getElementById('mercado').value == "1" || document.getElementById('mercado').value == "2" || 
-			 document.getElementById('mercado').value == "3") && (document.getElementById('date').value != null) {
+			 document.getElementById('mercado').value == "3") && (document.getElementById('date').value != null)) {
 	 	var container = document.getElementById("Agenda");
      	var div = document.getElementById("divAgenda");
      	container.appendChild(div.cloneNode(true));
