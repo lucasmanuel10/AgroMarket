@@ -46,5 +46,6 @@ function shoppingCart(email) {
   has_shopping_cart(email, function(x){
     document.getElementById("shoppingcart").innerHTML = x;
   });
+  
 }
 
