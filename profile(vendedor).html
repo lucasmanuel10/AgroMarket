@@ -30,7 +30,7 @@
 	href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
 
 </head>
-<body>
+<body onload="loadProfile()">
   <nav class="navbar navbar-expand-lg" style="background-color: #90EE90;">
 			<a class="navbar-brand" href="#"><img src="images/logo.png" height="50px"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -73,20 +73,18 @@
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h2 class="card-title">Meu Perfil de Vendedor</h2><hr>
-          <p class="card-text"><strong>Nome Próprio:</strong> Abel Mateus <button type="button" class="btn btn-success btn-sm" style="float: right" data-toggle="modal" data-target="#exampleModalNome">Alterar Nome</button></p>
-          <p class="card-text"><strong>Apelido:</strong> Rodrigues Xavier <button type="button" class="btn btn-success btn-sm" style="float: right" data-toggle="modal" data-target="#exampleModalApelido">Alterar Apelido</button></p>
-          <p class="card-text"><strong>Email:</strong> abelx@gmail.com <button type="button" class="btn btn-success btn-sm" style="float: right" data-toggle="modal" data-target="#exampleModalEmail">Alterar Email</button></p>
-          <p class="card-text"><strong>Password:</strong> ******* <button type="button" class="btn btn-success btn-sm" style="float: right" data-toggle="modal" data-target="#exampleModalPassword">Alterar Password</button></p>
-          <hr>
-          <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" onclick = "passCliente()" checked>
-              <label class="custom-control-label" for="defaultChecked">Perfil de Vendedor</label>
-          </div>
+        <h2 class="card-title">Meu Perfil de Vendedor</h2>
+        <hr>
+        <div id="profile-info">
+
+        </div>
+        <hr>
+        <div class="custom-control custom-radio">
+          <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" onclick = "passCliente()" checked>
+            <label class="custom-control-label" for="defaultChecked">Perfil de Vendedor</label>
+        </div>
           <br>
-          <p class="card-text"><strong>Número de Vendedor:</strong> 999999 <button type="button" class="btn btn-primary btn-sm" style="float: right" data-toggle="modal" data-target="#exampleModalNumero">Alterar Número</button></p>
-          <p class="card-text"><strong>Contacto Telefónico:</strong> 912345678 <button type="button" class="btn btn-primary btn-sm" style="float: right" data-toggle="modal" data-target="#exampleModalContacto">Alterar Contacto</button></p>
-          
+      
           <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
             Dados de Pagamento
@@ -298,50 +296,7 @@
             </div>
           </div>
         </div>
-          
-        <script>
-             function myFunction() {
-                  var x = document.getElementById("inputPassword");
-                  if (x.type === "password") {
-                    x.type = "text";
-                  } else {
-                    x.type = "password";
-                  }
-                }
-        
-            function myFunction2() {
-              var x = document.getElementById("inputPassword2");
-              if (x.type === "password") {
-                x.type = "text";
-              } else {
-                x.type = "password";
-              }
-            }   
-            
-            document.getElementById("plusAgenda").onclick = function() {
-                var container = document.getElementById("Agenda");
-                var div = document.getElementById("divAgenda");
-                container.appendChild(div.cloneNode(true));
-                document.getElementById("lessAgenda").onclick = function() {
-                  container.parentNode.removeChild(div);
-                }
-              }
-            
-            function passEmail(){
-            	var type = window.location.hash.substr(1);
-            	window.location.href = "https://lucasmanuel10.github.io/AgroMarket/home-page.html#" + type;
-            }
-            
-            function passCliente(){
-                var email = window.location.hash.substr(1);
-                var type = false;
-                change_account_type(email, type, function(x){
-                    console.log(x);
-                    window.location.href = "https://lucasmanuel10.github.io/AgroMarket/profile(cliente).html#" + email;
-                });
-            }
-        </script>
-          
+
         <!-- Modal Nº Vendedor -->
         <div class="modal fade" id="exampleModalNumero" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
@@ -521,3 +476,59 @@
   left: -120px !important;
 }
 </style>
+
+<script>
+  function myFunction() {
+       var x = document.getElementById("inputPassword");
+       if (x.type === "password") {
+         x.type = "text";
+       } else {
+         x.type = "password";
+       }
+     }
+
+ function myFunction2() {
+   var x = document.getElementById("inputPassword2");
+   if (x.type === "password") {
+     x.type = "text";
+   } else {
+     x.type = "password";
+   }
+ }   
+ 
+ document.getElementById("plusAgenda").onclick = function() {
+     var container = document.getElementById("Agenda");
+     var div = document.getElementById("divAgenda");
+     container.appendChild(div.cloneNode(true));
+     document.getElementById("lessAgenda").onclick = function() {
+       container.parentNode.removeChild(div);
+     }
+   }
+ 
+ function passEmail(){
+   var type = window.location.hash.substr(1);
+   window.location.href = "https://lucasmanuel10.github.io/AgroMarket/home-page.html#" + type;
+ }
+ 
+ function passCliente(){
+    var email = window.location.hash.substr(1);
+     change_account_type(email, false, function(x){
+         console.log(x);
+         window.location.href = "https://lucasmanuel10.github.io/AgroMarket/profile(cliente).html#" + email;
+     });
+ }
+
+ function loadProfile() {
+  var email = window.location.hash.substr(1);
+  get_user(email, function(user){
+    console.log(user);
+    x = '<p class="card-text"><strong>Nome Próprio:</strong> ' + user.FirstName + '</p>';
+    x += '<p class="card-text"><strong>Apelido:</strong> ' + user.LastName + '</p>';
+    x += '<p class="card-text"><strong>Email:</strong> ' + user.Email + '</p>';
+    x += '<p class="card-text"><strong>Password:</strong>**********</p>';
+    document.getElementById("profile-info").innerHTML = x;
+  });
+ } 
+</script>
+
+
