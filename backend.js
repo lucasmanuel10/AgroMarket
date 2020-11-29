@@ -224,3 +224,30 @@ function get_order_history(email, order, callback) {
         callback(products.toJSON());   
     }); 
 }
+
+function get_schedule(email, callback) {
+    firebase.database().ref('users/' + email.split("@")[0] + '/Schedule').once('value').then(function(snapshot) {
+        var schedule = snapshot.val();
+        var schedule_ = [];
+        if(schedule != null) {
+            snapshot.forEach(function(childSnapshot) {
+                schedule_.push(childSnapshot.toJSON());
+            });
+        }
+        callback(schedule_);
+    });
+}
+
+function add_schedule(email, market, date, callback) {
+    var month = date.getUTCMonth() + 1; 
+    var day = date.getUTCDate();
+    var year = date.getUTCFullYear();
+    var completeDate = day.toString() + month.toString() + year.toString();
+    var completeDate_ = day.toString() + '/'+ month.toString() +'/'+ year.toString();
+    var id = market + completeDate;
+    firebase.database().ref('users/' + email.split("@")[0] + '/Schedule/' + id).set({
+        Market: market,
+        Date: completeDate_
+    });
+    callback(id);
+}
