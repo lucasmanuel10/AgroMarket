@@ -182,10 +182,12 @@ function remove_from_cart(email, product_name, callback) {
 
 function finish_purchase(email,montante, callback) {
     var order = Math.round(Math.random()*10000); 
+    var date = Date();
+    var completeDate = date.getDay() + '/' + date.getMonth() + '/' + date.getYear();
     firebase.database().ref('users/' + email.split("@")[0] + '/History/' + order).set({
         Order: order,
         State: "Concluded",
-        Date: Date(),
+        Date:  completeDate,
         Total: montante
     }); 
     firebase.database().ref('users/' + email.split("@")[0] + '/Cart/').once('value').then(function(snapshot) {  
@@ -193,7 +195,7 @@ function finish_purchase(email,montante, callback) {
             var product = childSnapshot.val();
             firebase.database().ref('users/' + email.split("@")[0] + '/History/' + order +'/' + product.ProductName).set({
                 ProductName: product.ProductName,
-                Quantity: quantity,
+                Quantity: product.Quantity,
                 Image: product.Image,
                 Description: product.Description,
                 Market: product.Market,
