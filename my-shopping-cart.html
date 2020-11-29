@@ -195,7 +195,7 @@
         x += '<div class="text-center mt-3"><h5>Total: ' + total +' €</h5></div>';
         document.getElementById("cartId").innerHTML = x;
 	if(total>0)
-		document.getElementById("advanceId").innerHTML = '<button type="button" class="btn btn-success btn-block">Avançar com a compra</button>';
+		document.getElementById("advanceId").innerHTML = '<button onclick="checkout()" type="button" class="btn btn-success btn-block">Avançar com a compra</button>';
     });
   }
 
@@ -205,6 +205,11 @@
     remove_from_cart(email, product, function(){
       window.location.reload();
     });
+  }
+
+  function checkout(){
+    var email = window.location.hash.substr(1);
+    window.location.href = "https://lucasmanuel10.github.io/AgroMarket/checkout.html#" + email;
   }
 
 </script>
