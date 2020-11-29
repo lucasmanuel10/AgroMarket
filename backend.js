@@ -65,7 +65,7 @@ function change_account_type(email, type, callback) {
     firebase.database().ref('users/' + email.split("@")[0]).update({
         AccountType: type
       });
-      callback(type);
+      callback();
 }
 
 function is_seller(email, callback) {
