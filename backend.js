@@ -180,11 +180,18 @@ function remove_from_cart(email, product_name, callback) {
     callback();
 }
 
-function finish_purchase(email, callback) {
-    firebase.database().ref('users/' + email.split("@")[0] + '/Cart/').once('value').then(function(snapshot) { 
+function finish_purchase(email,montante, callback) {
+    var order = Math.random()*10000; 
+    firebase.database().ref('users/' + email.split("@")[0] + '/History/' + order).set({
+        Order: order,
+        State: "Concluded",
+        Date: Date(),
+        Total: montante
+    }); 
+    firebase.database().ref('users/' + email.split("@")[0] + '/Cart/').once('value').then(function(snapshot) {  
         snapshot.forEach(function(childSnapshot) {
             var product = childSnapshot.val();
-            firebase.database().ref('users/' + email.split("@")[0] + '/History/' + product.ProductName).set({
+            firebase.database().ref('users/' + email.split("@")[0] + '/History/' + order +'/' + product.ProductName).set({
                 ProductName: product.ProductName,
                 Quantity: quantity,
                 Image: product.Image,
