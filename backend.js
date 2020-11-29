@@ -144,20 +144,16 @@ function add_to_cart(email, product_name, callback) {
     firebase.database().ref('product/' + product_name).once('value').then(function(snapshot){
         var stock = snapshot.val().Stock;
         var product = snapshot.val();
-        firebase.database().ref('users/' + email.split("@")[0]).once('value').then(function(snapshot) {
-            var cart = snapshot.val().Cart; 
-            cart.push(product);
-            firebase.database().ref('users/' + email.split("@")[0]).set({
-                Cart: cart
+        firebase.database().ref('users/' + email.split("@")[0] + '/Cart').set({
+            Product: product
+        });
+        if(stock > 1) {
+            stock = stock -1;
+            firebase.database().ref('product/' + product_name).set({
+                Stock: stock
             });
-            if(stock > 1) {
-                stock = stock -1;
-                firebase.database().ref('product/' + product_name).set({
-                    Stock: stock
-                });
-            } else
-                firebase.database().ref('product/' + product_name).remove(); 
-            callback(cart);
-        });   
-    });  
+        } else
+            firebase.database().ref('product/' + product_name).remove(); 
+        callback(product);
+    });   
 }
