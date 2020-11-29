@@ -189,12 +189,22 @@
             var src = products[p].Image;
             var preco = products[p].Price * quantidade;
             total += preco;
-            x += '<hr><div class="media"><img src='+src+' height="100px" class="align-self-center mr-3"><div class="media-body"><div class="col-md-10 pt-3"><p class="pb-0"><b>'+produto+'</b><br><small>'+descricao+'</small></p><p class="pb-0"></p><b>Produtor: </b>'+produtor+'<br></p><p class="pb-0"></p><b>Localização: </b> '+localizacao+'</p><p class="pb-0"></p><b>Quantidade: </b> '+quantidade+' kg</p><p><b>Preço: </b> '+preco+' €</p></div></div><button type="button" class="close" aria-label="Close" data-toggle="tooltip" data-placement="bottom" title="Remover"><span aria-hidden="true">&times;</span></button></div><hr>';        
+            "addItemToCart(\'' + products[p].ProductName + '\')"
+            x += '<hr><div class="media"><img src='+src+' height="100px" class="align-self-center mr-3"><div class="media-body"><div class="col-md-10 pt-3"><p class="pb-0"><b>'+produto+'</b><br><small>'+descricao+'</small></p><p class="pb-0"></p><b>Produtor: </b>'+produtor+'<br></p><p class="pb-0"></p><b>Localização: </b> '+localizacao+'</p><p class="pb-0"></p><b>Quantidade: </b> '+quantidade+' kg</p><p><b>Preço: </b> '+preco+' €</p></div></div><button onclick="remove(\'' + produto + '\')" type="button" class="close" aria-label="Close" data-toggle="tooltip" data-placement="bottom" title="Remover"><span aria-hidden="true">&times;</span></button></div><hr>';        
         }
         x += '<div class="text-center mt-3"><h5>Total: ' + total +' €</h5></div>';
         document.getElementById("cartId").innerHTML = x;
     });
   }
+
+  function remove(product){
+    var email = window.location.hash.substr(1);
+    console.log(product);
+    remove_from_cart(email, product, function(){
+      window.location.reload();
+    });
+  }
+
 </script>
 
 <style>
