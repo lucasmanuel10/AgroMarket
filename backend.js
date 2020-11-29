@@ -181,7 +181,7 @@ function remove_from_cart(email, product_name, callback) {
 }
 
 function finish_purchase(email,montante, callback) {
-    var order = Math.random()*10000; 
+    var order = Math.round(Math.random()*10000); 
     firebase.database().ref('users/' + email.split("@")[0] + '/History/' + order).set({
         Order: order,
         State: "Concluded",
