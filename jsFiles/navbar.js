@@ -37,6 +37,11 @@ function history() {
   window.location.href = "https://lucasmanuel10.github.io/AgroMarket/historico.html#" + email;
 }
 
+function myShoppingCart() {
+  var email = window.location.hash.substr(1);
+  window.location.href = "https://lucasmanuel10.github.io/AgroMarket/my-shopping-cart.html#" + email;
+}
+
 function shoppingCart(email) {
   has_shopping_cart(email, function(x){
     document.getElementById("shoppingcart").innerHTML = x;
