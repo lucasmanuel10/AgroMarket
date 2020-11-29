@@ -251,3 +251,9 @@ function add_schedule(email, market, date, callback) {
     });
     callback(id);
 }
+
+function remove_schedule(email, market, date, callback) {
+    var id= market + date;
+    firebase.database().ref('users/' + email.split("@")[0] + '/Schedule/' + id).remove();
+    callback(id);
+}
