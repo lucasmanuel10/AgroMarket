@@ -62,102 +62,10 @@ function get_user(email, callback) {
 
 
 function change_account_type(email, type, callback) {
-    firebase.database().ref('users/' + email.split("@")[0]).once('value').then(function(snapshot) {
-        var user = snapshot.val();
-        if(user.Cart ==null) {
-            if(user.History == null) {
-                if(user.Schedule == null) {
-                    firebase.database().ref('users/' + email.split("@")[0]).set( {
-                        FirstName: user.FirstName,
-                        LastName: user.LastName,
-                        Email: user.Email,
-                        Password: user.Password,
-                        AccountType: type  
-                    });
-                } else {
-                    firebase.database().ref('users/' + email.split("@")[0]).set( {
-                        FirstName: user.FirstName,
-                        LastName: user.LastName,
-                        Email: user.Email,
-                        Password: user.Password,
-                        AccountType: type,
-                        Schedule: user.Schedule  
-                    });
-                }     
-            } else {
-                if(user.Schedule == null) {
-                    firebase.database().ref('users/' + email.split("@")[0]).set( {
-                        FirstName: user.FirstName,
-                        LastName: user.LastName,
-                        Email: user.Email,
-                        Password: user.Password,
-                        AccountType: type,
-                        History: user.History  
-                    });
-                } else {
-                    firebase.database().ref('users/' + email.split("@")[0]).set( {
-                        FirstName: user.FirstName,
-                        LastName: user.LastName,
-                        Email: user.Email,
-                        Password: user.Password,
-                        AccountType: type,
-                        History: user.History,
-                        Schedule: user.Schedule  
-                    });                   
-                }
-               
-            }    
-        } else {
-            if(user.History == null) {
-                if(user.Schedule == null) {
-                    firebase.database().ref('users/' + email.split("@")[0]).set( {
-                        FirstName: user.FirstName,
-                        LastName: user.LastName,
-                        Email: user.Email,
-                        Password: user.Password,
-                        AccountType: type,
-                        Cart: user.Cart  
-                    });
-                } else {
-                    firebase.database().ref('users/' + email.split("@")[0]).set( {
-                        FirstName: user.FirstName,
-                        LastName: user.LastName,
-                        Email: user.Email,
-                        Password: user.Password,
-                        AccountType: type,
-                        Cart: user.Cart,
-                        Schedule: user.Schedule 
-                    });
-                }
-               
-            } else {
-                if(user.Schedule == null) {
-                    firebase.database().ref('users/' + email.split("@")[0]).set( {
-                        FirstName: user.FirstName,
-                        LastName: user.LastName,
-                        Email: user.Email,
-                        Password: user.Password,
-                        AccountType: type,
-                        Cart: user.Cart, 
-                        History: user.History 
-                    });
-                } else {
-                    firebase.database().ref('users/' + email.split("@")[0]).set( {
-                        FirstName: user.FirstName,
-                        LastName: user.LastName,
-                        Email: user.Email,
-                        Password: user.Password,
-                        AccountType: type,
-                        Cart: user.Cart, 
-                        History: user.History,
-                        Schedule: user.Schedule 
-                    });       
-                } 
-            }
-        }
-        callback(type);
-    });
-    
+    firebase.database().ref('users/' + email.split("@")[0]).update({
+        AccountType: type
+      });
+      callback(type);
 }
 
 function is_seller(email, callback) {
