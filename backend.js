@@ -220,8 +220,7 @@ function get_history(email, callback) {
 
 function get_order_history(email, order, callback) {
     firebase.database().ref('users/' + email.split("@")[0] + '/History/' + order).once('value').then(function(snapshot) {
-        var products = snapshot.val();
-        callback(products.toJSON());   
+        callback(snapshot.toJSON());   
     }); 
 }
 
