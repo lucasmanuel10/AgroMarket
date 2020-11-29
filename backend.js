@@ -179,3 +179,8 @@ function remove_from_cart(email, product_name, callback) {
     firebase.database().ref('users/' + email.split("@")[0] + '/Cart/' + product_name).remove();  
     callback();
 }
+
+function finish_purchase(email, callback) {
+    firebase.database().ref('users/' + email.split("@")[0] + '/Cart/').remove();
+    callback();
+}
