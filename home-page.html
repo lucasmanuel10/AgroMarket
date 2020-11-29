@@ -213,6 +213,7 @@
   function addItemToCart(item){
 	console.log(item);
 	var q = document.getElementById(item + " quantity").value;
+	console.log(q);
 
 	var email = window.location.hash.substr(1);
 	add_to_cart(email, item, q, function(){
