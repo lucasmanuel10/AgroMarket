@@ -30,7 +30,7 @@
 	href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
 
 </head>
-<body>
+<body onload="loadProfile()">
   <nav class="navbar navbar-expand-lg" style="background-color: #90EE90;">
 			<a class="navbar-brand" href="#"><img src="images/logo.png" height="50px"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,10 +74,9 @@
     <div class="col-md-8">
       <div class="card-body">
         <h2 class="card-title">Meu Perfil de Cliente</h2><hr>
-          <p class="card-text"><strong>Nome Próprio:</strong> Abel Mateus <button type="button" class="btn btn-success btn-sm" style="float: right" data-toggle="modal" data-target="#exampleModalNome">Alterar Nome</button></p>
-          <p class="card-text"><strong>Apelido:</strong> Rodrigues Xavier <button type="button" class="btn btn-success btn-sm" style="float: right" data-toggle="modal" data-target="#exampleModalApelido">Alterar Apelido</button></p>
-          <p class="card-text"><strong>Email:</strong> abelx@gmail.com <button type="button" class="btn btn-success btn-sm" style="float: right" data-toggle="modal" data-target="#exampleModalEmail">Alterar Email</button></p>
-          <p class="card-text"><strong>Password:</strong> ******* <button type="button" class="btn btn-success btn-sm" style="float: right" data-toggle="modal" data-target="#exampleModalPassword">Alterar Password</button></p>
+          <div id="profile-info">
+
+          </div>
           <hr>
           <div class="custom-control custom-radio">
             <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios" onclick ="passVendedor()">
@@ -223,37 +222,7 @@
             </div>
           </div>
         </div>
-          
-        <script>
-             function myFunction() {
-                  var x = document.getElementById("inputPassword");
-                  if (x.type === "password") {
-                    x.type = "text";
-                  } else {
-                    x.type = "password";
-                  }
-                }
-        
-            function myFunction2() {
-              var x = document.getElementById("inputPassword2");
-              if (x.type === "password") {
-                x.type = "text";
-              } else {
-                x.type = "password";
-              }
-            }  
-            
-            function passEmail(){
-            	var type = window.location.hash.substr(1);
-            	window.location.href = "https://lucasmanuel10.github.io/AgroMarket/home-page.html#" + type;
-            }
-            
-            function passVendedor(){
-            	var type = window.location.hash.substr(1);
-            	window.location.href = "https://lucasmanuel10.github.io/AgroMarket/profile(vendedor).html#" + type;
-            }
-        </script>
-    
+
 	<footer class="page-footer font-small blue-grey lighten-5">
 		<!--<div style="background-color: #21d192;">-->
 		<div style="background-color: rgba(30, 130, 76, 1)">
@@ -362,3 +331,48 @@
   left: -120px !important;
 }
 </style>
+
+<script>
+  function myFunction() {
+       var x = document.getElementById("inputPassword");
+       if (x.type === "password") {
+         x.type = "text";
+       } else {
+         x.type = "password";
+       }
+     }
+
+ function myFunction2() {
+   var x = document.getElementById("inputPassword2");
+   if (x.type === "password") {
+     x.type = "text";
+   } else {
+     x.type = "password";
+   }
+ }  
+ 
+ function passEmail(){
+   var type = window.location.hash.substr(1);
+   window.location.href = "https://lucasmanuel10.github.io/AgroMarket/home-page.html#" + type;
+ }
+ 
+ function passVendedor(){
+   var email = window.location.hash.substr(1);
+   change_account_type(email, true, function(){
+     window.location.href = "https://lucasmanuel10.github.io/AgroMarket/profile(vendedor).html#" + email;
+   });
+ }
+
+ function loadProfile() {
+  var email = window.location.hash.substr(1);
+  get_user(email, function(user){
+    console.log(user);
+    x = '<p class="card-text"><strong>Nome Próprio:</strong> ' + user.FirstName + '</p>';
+    x += '<p class="card-text"><strong>Apelido:</strong> ' + user.LastName + '</p>';
+    x += '<p class="card-text"><strong>Email:</strong> ' + user.Email + '</p>';
+    x += '<p class="card-text"><strong>Password:</strong>**********</p>';
+    document.getElementById("profile-info").innerHTML = x;
+  });   
+ }
+
+</script>
