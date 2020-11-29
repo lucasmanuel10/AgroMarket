@@ -28,7 +28,12 @@ function sellItem() {
 
 function homepage() {
   var email = window.location.hash.substr(1);
-  window.location.href = "https://lucasmanuel10.github.io/AgroMarket/hom-page.html#" + email;
+  window.location.href = "https://lucasmanuel10.github.io/AgroMarket/home-page.html#" + email;
+}
+
+function history() {
+  var email = window.location.hash.substr(1);
+  window.location.href = "https://lucasmanuel10.github.io/AgroMarket/historico.html#" + email;
 }
 
 function shoppingCart(email) {
