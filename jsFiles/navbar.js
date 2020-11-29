@@ -1,5 +1,4 @@
 function loadNavbar() {
-  var b = true;
   var email = window.location.hash.substr(1);
   console.log(email);
 
@@ -29,9 +28,12 @@ function sellItem() {
 
 function homepage() {
   var email = window.location.hash.substr(1);
-  window.location.href = "https://lucasmanuel10.github.io/AgroMarket/home-page.html#" + email;
+  window.location.href = "https://lucasmanuel10.github.io/AgroMarket/hom-page.html#" + email;
 }
 
-
-
+function shoppingCart(email) {
+  has_shopping_cart(email, function(x){
+    document.getElementById("shoppingcart").innerHTML = 10;
+  });
+}
 
