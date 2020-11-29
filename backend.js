@@ -105,38 +105,23 @@ function get_products(callback) {
     });  
 }
 
-
-
-function get_products_(callback, category) {
-    firebase.database().ref('products/' + category).once('value').then(function(snapshot){
-        var products = snapshot.val(); 
-        if(products == null)
-            products = []; 
-        callback(products);  
-    });  
-}
-
-function get_products_ordered(email) {
-    firebase.database().ref('products/').once('value').then(function(snapshot){
-        var products = snapshot.val();
-        if (products == null)
-            products = [];
-        else {
-            var user_products = [];
-            for (product in products) {
-                if(product.Buyer == email.split("@")[0])
-                    user_products.push(product);
-            }
-            products = user_products;
-        }
-        callback(products);
+function get_shopping_cart(email, callback) {
+    var cart= [];
+    firebase.database().ref('users/' + email.split("@")[0] + '/Cart').once('value').then(function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+            cart.push(childSnapshot.toJSON());
+       }); 
+       callback(cart);
     });
 }
 
-function get_shopping_cart(email) {
+function has_shopping_cart(email, callback) {
     firebase.database().ref('users/' + email.split("@")[0]).once('value').then(function(snapshot) {
-        var cart = snapshot.val().cart; 
-        callback(cart);
+        var cart = snapshot.val().Cart;
+        if(cart!=null) 
+            callback(true);
+        else
+            callback(false);
     });
 }
 
