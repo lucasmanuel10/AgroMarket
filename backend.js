@@ -53,7 +53,31 @@ function register(first_name, last_name, email, password, account_type, callback
         callback(x);
     });    
 }
-
+function upgrade(email, callback) {
+    firebase.database().ref('users/' + email.split("@")[0]).once('value').then(function(snapshot) {
+        var user = snapshot.val();
+        if(user.Cart ==null) {
+            firebase.database().ref('users/' + email.split("@")[0]).set( {
+                FirstName: user.FirstName,
+                LastName: user.LastName,
+                Email: user.Email,
+                Password: user.Password,
+                AccountType: true,  
+            });
+        } else {
+            firebase.database().ref('users/' + email.split("@")[0]).set( {
+                FirstName: user.FirstName,
+                LastName: user.LastName,
+                Email: user.Email,
+                Password: user.Password,
+                AccountType: true,
+                Cart: user.Cart  
+            });
+        }
+        callback(true);
+    });
+    
+}
 function is_seller(email, callback) {
     firebase.database().ref('users/' + email.split("@")[0]).once('value').then(function(snapshot) {
         var x = true;
