@@ -174,3 +174,8 @@ function add_to_cart(email, product_name, quantity, callback) {
         } 
     });   
 }
+
+function remove_from_cart(email, product_name, callback) {     
+    firebase.database().ref('users/' + email.split("@")[0] + '/Cart/' + product_name).remove();  
+    callback();
+}
