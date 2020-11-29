@@ -150,9 +150,7 @@
           <div id="productsId">
             <hr>
             <div class="ml-2"> <!--Vai estar em loop tbem-->
-              <p class="mb-0"><b>Produto: </b>Batatas</p>
-              <p class="mb-0"><b>Quantidade: </b>dsfdsfds</p>
-              <p class="mb-0"><b>Preço: </b>dsfdsfds</p>
+              
             </div>
             <hr>
           </div>
@@ -165,7 +163,7 @@
     </div>
     
     <div class="col-md-8 my-3 pr-4">
-      <a href="payment.html" class="btn btn-success btn-block" role="button">Pagar</a>
+      <a onclick="go_to_payment()" class="btn btn-success btn-block" role="button">Pagar</a>
     </div>
   </div>
 </body>
@@ -178,6 +176,8 @@
 </style>
 
 <script>
+  total = 0;
+
   function checkedHome() {
     document.getElementById("idHome").style.display = "block";
     document.getElementById("idMarket").style.display = "none";    
@@ -188,7 +188,6 @@
   }
   function loadCompra() {
     var email = window.location.hash.substr(1);
-    var total = 0;
     var x = '';
     get_shopping_cart(email, function(products){
       for(p in products) {
@@ -205,5 +204,10 @@
       y = '<p><b>Total: </b>'+total+' euros</p>'
       document.getElementById("total").innerHTML = y;
     });
+  }
+
+  function go_to_payment() {
+    var email = window.location.hash.substr(1);
+    window.location.href = "https://lucasmanuel10.github.io/AgroMarket/payment.html?montante=" + total + "#" + email;
   }
 </script>
