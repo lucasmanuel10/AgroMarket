@@ -210,3 +210,27 @@ function finish_purchase(email,montante, callback) {
         callback();
     });
 }
+
+function get_history(email, callback) {
+    firebase.database().ref('users/' + email.split("@")[0] + '/History/').once('value').then(function(snapshot) {
+        var products = snapshot.val();
+        console.log(products);
+        if(products == null) {
+            products_ = []; 
+            callback(products_);  
+        } else {
+           var products_ = [];
+           snapshot.forEach(function(childSnapshot) {
+                products_.push(childSnapshot.toJSON());
+           }); 
+           callback(products_);    
+        } 
+    });
+}
+
+function get_order_history(email, order, callback) {
+    firebase.database().ref('users/' + email.split("@")[0] + '/History/' + order).once('value').then(function(snapshot) {
+        var products = snapshot.val();
+        callback(products.toJSON());   
+    }); 
+}
