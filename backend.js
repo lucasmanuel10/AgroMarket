@@ -196,11 +196,10 @@ function finish_purchase(email,montante, callback) {
                 Price: product.Price
             });
         });
-        firebase.database().ref('users/' + email.split("@")[0] + '/Cart/').remove();
+        firebase.database().ref('users/' + email.split("@")[0] + '/Cart').remove();
         callback();
     });
 }
-
 function get_history(email, callback) {
     firebase.database().ref('users/' + email.split("@")[0] + '/History/').once('value').then(function(snapshot) {
         var products = snapshot.val();
