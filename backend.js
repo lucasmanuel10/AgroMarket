@@ -186,7 +186,7 @@ function finish_purchase(email,montante, callback) {
     firebase.database().ref('users/' + email.split("@")[0] + '/Cart/').once('value').then(function(snapshot) {  
         snapshot.forEach(function(childSnapshot) {
             var product = childSnapshot.val();
-            firebase.database().ref('users/' + email.split("@")[0] + '/History/' + order +'/' + product.ProductName).set({
+            firebase.database().ref('users/' + email.split("@")[0] + '/History/' + order +'/Produtos/' + product.ProductName).set({
                 ProductName: product.ProductName,
                 Quantity: product.Quantity,
                 Image: product.Image,
@@ -219,7 +219,7 @@ function get_history(email, callback) {
 }
 
 function get_order_history(email, order, callback) {
-    firebase.database().ref('users/' + email.split("@")[0] + '/History/' + order).once('value').then(function(snapshot) {
+    firebase.database().ref('users/' + email.split("@")[0] + '/History/' + order +'/Produtos/').once('value').then(function(snapshot) {
         callback(snapshot.toJSON());   
     }); 
 }
