@@ -189,7 +189,7 @@ function finish_purchase(email,montante, callback) {
     var completeDate = day + "/" + month + "/" + year;
     firebase.database().ref('users/' + email.split("@")[0] + '/History/' + order).set({
         Order: order,
-        State: "Concluded",
+        State: "Concluído",
         Date:  completeDate,
         Total: montante
     }); 
