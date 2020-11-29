@@ -118,10 +118,16 @@ function get_shopping_cart(email, callback) {
 function has_shopping_cart(email, callback) {
     firebase.database().ref('users/' + email.split("@")[0]).once('value').then(function(snapshot) {
         var cart = snapshot.val().Cart;
-        if(cart!=null) 
-            callback(true);
-        else
-            callback(false);
+        if(cart!=null) {
+            var length = 0;
+            firebase.database().ref('users/' + email.split("@")[0] + '/Cart').once('value').then(function(snap) {
+                snap.forEach(function(childSnapshot) {
+                    length++;
+                });
+                callback(length);
+            });
+        } else
+            callback(0);
     });
 }
 
