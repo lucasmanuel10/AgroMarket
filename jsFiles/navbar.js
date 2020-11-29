@@ -33,7 +33,7 @@ function homepage() {
 
 function shoppingCart(email) {
   has_shopping_cart(email, function(x){
-    document.getElementById("shoppingcart").innerHTML = 10;
+    document.getElementById("shoppingcart").innerHTML = x;
   });
 }
 
