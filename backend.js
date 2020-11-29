@@ -181,6 +181,20 @@ function remove_from_cart(email, product_name, callback) {
 }
 
 function finish_purchase(email, callback) {
-    firebase.database().ref('users/' + email.split("@")[0] + '/Cart/').remove();
-    callback();
+    firebase.database().ref('users/' + email.split("@")[0] + '/Cart/').once('value').then(function(snapshot) { 
+        snapshot.forEach(function(childSnapshot) {
+            var product = childSnapshot.val();
+            firebase.database().ref('users/' + email.split("@")[0] + '/History/' + product.ProductName).set({
+                ProductName: product.ProductName,
+                Quantity: quantity,
+                Image: product.Image,
+                Description: product.Description,
+                Market: product.Market,
+                Seller: product.Seller,
+                Price: product.Price
+            });
+        });
+        firebase.database().ref('users/' + email.split("@")[0] + '/Cart/').remove();
+        callback();
+    });
 }
