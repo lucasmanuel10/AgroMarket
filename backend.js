@@ -182,8 +182,11 @@ function remove_from_cart(email, product_name, callback) {
 
 function finish_purchase(email,montante, callback) {
     var order = Math.round(Math.random()*10000); 
-    var date = Date();
-    var completeDate = date.getDay() + '/' + date.getMonth() + '/' + date.getYear();
+    var dateObj = new Date();
+    var month = dateObj.getUTCMonth() + 1; 
+    var day = dateObj.getUTCDate();
+    var year = dateObj.getUTCFullYear();
+    var completeDate = day + "/" + month + "/" + year;
     firebase.database().ref('users/' + email.split("@")[0] + '/History/' + order).set({
         Order: order,
         State: "Concluded",
