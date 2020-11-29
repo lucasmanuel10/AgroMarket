@@ -109,7 +109,7 @@
                   <div class="form-row" id="divAgenda">
                     <div class="col-md-6 mb-3">
                       <label for="validationCustom02"><h5>Mercado:</h5></label>
-                      <select class="custom-select border border-dark rounded-0" required>
+                      <select id="mercado" class="custom-select border border-dark rounded-0" required>
                           <option selected>Escolha o Mercado</option>
                           <option value="1">Mercado da Ribeira</option>
                           <option value="2">Mercado de Santana</option>
@@ -121,7 +121,7 @@
                     </div>
                     <div class="col-md-6 mb-3">
                       <label for="validationCustomUsername"><h5>Data:</h5></label>
-                        <input type="date" style="width: 225px; height: 38px">
+                        <input id="date" type="date" style="width: 225px; height: 38px">
                     </div>
                   </div>
                  <div id="Agenda"></div>
@@ -497,12 +497,15 @@
  }   
  
  document.getElementById("plusAgenda").onclick = function() {
-     var container = document.getElementById("Agenda");
-     var div = document.getElementById("divAgenda");
-     container.appendChild(div.cloneNode(true));
-     document.getElementById("lessAgenda").onclick = function() {
-       container.parentNode.removeChild(div);
-     }
+	 if((document.getElementById('mercado').value == "1" || document.getElementById('mercado').value == "2" || 
+			 document.getElementById('mercado').value == "3") && (document.getElementById('date').value != null) {
+	 	var container = document.getElementById("Agenda");
+     	var div = document.getElementById("divAgenda");
+     	container.appendChild(div.cloneNode(true));
+     	document.getElementById("lessAgenda").onclick = function() {
+       		container.parentNode.removeChild(div);
+     	}
+	 }
    }
  
  function passEmail(){
