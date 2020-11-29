@@ -130,8 +130,8 @@
                 <button type="button" class="btn btn-danger" id="lessAgenda" style="float:left; margin-left: 5px">Anular</button>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary">Guardar Alterações</button>
+                <button type="button" onclick=loadSchedule() class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" onclick=removeSchedule() class="btn btn-primary">Guardar Alterações</button>
               </div>
             </div>
           </div>
@@ -502,9 +502,11 @@
 					 document.getElementById('date').value.equals("dd-mm-aaaa"))) {
 	 	var container = document.getElementById("Agenda");
      	var div = document.getElementById("divAgenda");
-     	container.appendChild(div.cloneNode(true));
+         container.appendChild(div.cloneNode(true));
+         loadDate()
      	document.getElementById("lessAgenda").onclick = function() {
-       		container.parentNode.removeChild(div);
+               container.parentNode.removeChild(div);
+               removeDate();
      	}
 	 }else{
 		 $(document).ready(function(){
@@ -512,6 +514,33 @@
 			});
 	 }
    }
+
+    function loadDate() {
+        var email = window.location.hash.substr(1);
+        var market_ = document.getElementById("mercado").value;
+        var market = "";
+        if(market_ == 1)
+            market = "Mercado da Ribeira";
+        else if(market_ == 2)
+            market = "Mercado de Santana";
+        else
+            market = "Mercado de Faro";
+        var date_ = document.getElementById("date").value;
+        var date = new Date(date_);
+        console.log(email);
+        console.log(market);
+        console.log(date_);
+        add_schedule(email, market, date, function(id) {
+            console.log(id + "gayyy");
+        });
+    }
+
+function removeDate() {
+  var email = window.location.hash.substr(1);
+  remove_schedule(email, function(id) {
+    console.log(id);
+  });
+}
  
  function passEmail(){
    var type = window.location.hash.substr(1);
@@ -538,5 +567,3 @@
   });
  } 
 </script>
-
-
