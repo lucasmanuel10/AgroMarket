@@ -183,12 +183,12 @@ function finish_purchase(email,montante, callback) {
         Date:  completeDate,
         Total: montante
     }); 
-    firebase.database().ref('users/' + email.split("@")[0] + '/Cart/').once('value').then(function(snapshot) {  
+    firebase.database().ref('users/' + email.split("@")[0] + '/Cart').once('value').then(function(snapshot) {  
         snapshot.forEach(function(childSnapshot) {
             var product = childSnapshot.val();
             firebase.database().ref('users/' + email.split("@")[0] + '/History/' + order +'/Produtos/' + product.ProductName).set({
                 ProductName: product.ProductName,
-                Quantity: product.Quantity,
+                Quantity: product.Stock,
                 Image: product.Image,
                 Description: product.Description,
                 Market: product.Market,
