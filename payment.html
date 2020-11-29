@@ -69,8 +69,8 @@
       <small>*Se pretender levantar o produto no mercado, poderá pagar diretamente ao produtor na hora da compra.</small>
     </div>
     
-    <div class="offset-md-2 col-md-8 my-3">
-      <a href="home-page.html" class="btn btn-primary btn-block" role="button">Avançar para a página principal</a>
+    <div class="offset-md-2 col-md-8 my-3" id="avancarId">
+      
     </div>
   </div> 
 
@@ -179,9 +179,13 @@
 </body>
 </html>
 <script>
-    var montante = window.location.hash.substr(1);
+    const urlParams = new URLSearchParams(window.location.search);
+    var myParam = urlParams.get('montante').split("#");
+    var montante = myParam[0];
+    var email = myParam[1];
     function loadMontante() {
         document.getElementById("montanteId").innerHTML = document.getElementById("montanteId").innerHTML + '<p class="mb-0"><b>Montante: </b> ' + montante + ' </p>';
+        document.getElementById("montanteId").innerHTML = '<a href="home-page.html#' + email + '" class="btn btn-primary btn-block" role="button">Avançar para a página principal</a>';
     }
     
 </script>
