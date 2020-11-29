@@ -126,7 +126,7 @@
                   </div>
                  <div id="Agenda"></div>
                 </form><hr>
-                <button type="button" data-toggle="popover" title="Atenção" data-content="Selecione um mercado primeiro" class="btn btn-info" id="plusAgenda" style="float:left">Adicionar Data</button>
+                <button type="button" data-toggle="popover" title="Atenção" data-content="Selecione um mercado/data primeiro" class="btn btn-info" id="plusAgenda" style="float:left">Adicionar Data</button>
                 <button type="button" class="btn btn-danger" id="lessAgenda" style="float:left; margin-left: 5px">Anular</button>
               </div>
               <div class="modal-footer">
@@ -498,7 +498,8 @@
  
  document.getElementById("plusAgenda").onclick = function() {
 	 if((document.getElementById('mercado').value == "1" || document.getElementById('mercado').value == "2" || 
-			 document.getElementById('mercado').value == "3") && (document.getElementById('date').value != null)) {
+			 document.getElementById('mercado').value == "3") && (document.getElementById('date').value != null || 
+					 document.getElementById('date').value.equals("dd-mm-aaaa"))) {
 	 	var container = document.getElementById("Agenda");
      	var div = document.getElementById("divAgenda");
      	container.appendChild(div.cloneNode(true));
