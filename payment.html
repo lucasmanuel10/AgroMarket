@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="https://mdbootstrap.com/docs/jquery/modals/forms/">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
 </head>
-<body>
+<body onload= loadMontante()>
   <nav class="navbar navbar-expand-lg" style="background-color: #90EE90;">
 			<a class="navbar-brand" href="#"><img src="images/logo.png" height="50px"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,10 +62,9 @@
       <h2>PAGAMENTO</h2>
       <hr>
       <p>Foi-lhe enviado um email com os dados de pagamento.</p>
-      <div class="py-5 border">
+      <div class="py-5 border" id="montanteId">
         <p><b>Entidade: </b>11604</p>
         <p><b>Referência: </b>397 982 437</p>
-        <p class="mb-0"><b>Montante: </b>10 euros</p>
       </div>
       <small>*Se pretender levantar o produto no mercado, poderá pagar diretamente ao produtor na hora da compra.</small>
     </div>
@@ -179,7 +178,13 @@
 	
 </body>
 </html>
-
+<script>
+    var montante = window.location.hash.substr(1);
+    function loadMontante() {
+        document.getElementById("cartId").innerHTML = document.getElementById("cartId").innerHTML + '<p class="mb-0"><b>Montante: </b> ' + montante + ' </p>';
+    }
+    
+</script>
 <style>
 .my-dropdown-menu {
   left: -120px !important;
