@@ -333,8 +333,11 @@
             }
             
             function passCliente(){
-            	var type = window.location.hash.substr(1);
-            	window.location.href = "https://lucasmanuel10.github.io/AgroMarket/profile(cliente).html#" + type;
+                var email = "vale@gmail.com"; 
+                change_account_type(email, false, function(x){
+                    console.log(x);
+                    window.location.href = "https://lucasmanuel10.github.io/AgroMarket/profile(cliente).html#" + email;
+                });
             }
         </script>
           
@@ -507,7 +510,11 @@
 	</footer>
 </body>
 </html>
+<script>
 
+
+
+</script>
 <style>
 .my-dropdown-menu {
   left: -120px !important;
