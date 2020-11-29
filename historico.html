@@ -23,7 +23,7 @@
 
       <title>Histórico de Compras</title>
   </head>
-  <body onload="loadProducts()">
+  <body onload="loadEncomendas()">
     <nav class="navbar navbar-expand-lg" style="background-color: #90EE90;">
 			<a class="navbar-brand" onclick="homepage()" style="cursor: pointer;"><img src="images/logo.png" height="50px"></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,8 +58,8 @@
     </nav>
 
 
-    <div class="mt-5">
-      <div class="offset-md-2 col-md-8 pt-5 pb-5 pl-5 pr-5" style="background-color: #F8F8FF;">
+    <div class="my-5">
+      <div class="offset-md-2 col-md-8 pt-5 pb-5 pl-5 pr-5 bg-light">
         <h2 class="text-center">HISTÓRICO DE COMPRAS</h2>
 
         <div>
@@ -74,25 +74,8 @@
                 <th scope="col" class="text-center">Valor</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <th scope="row" class="text-center">1</th>
-                <td class="text-center">Entregue</td>
-                <td class="text-center">28/11/20</td>
-                <td class="text-center">10€</td>
-              </tr>
-              <tr>
-                <th scope="row" class="text-center">2</th>
-                <td class="text-center">Entregue</td>
-                <td class="text-center">29/11/20</td>
-                <td class="text-center">5€</td>
-              </tr>
-              <tr>
-                <th scope="row" class="text-center">3</th>
-                <td class="text-center">Em progresso</td>
-                <td class="text-center">29/11/20</td>
-                <td class="text-center">2€</td>
-              </tr>
+            <tbody id="encomendas">
+              
             </tbody>
           </table>
 
@@ -213,3 +196,20 @@
     left: -120px !important;
   }
 </style>
+
+<script>
+  function loadEncomendas() {
+    var email = "vale@gmail.com";
+    get_history(email, function(products){
+      for(p in products){
+        var nr = products[p].Order;
+        var state = products[p].State;
+        var date = products[p].Date;
+        var total = products[p].Total;
+
+        var x = '<tr><th scope="row" class="text-center">'+nr+'</th><td class="text-center">'+state+'</td><td class="text-center">'+date+'</td><td class="text-center">'+total+' €</td><td class="text-center"><a href="compra.html?nr='+nr+'#'+email+'">Ver Ecomenda</a></td></tr>';
+      }
+      document.getElementById("encomendas").innerHTML = x;
+    });    
+  }
+</script>
