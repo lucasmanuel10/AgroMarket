@@ -140,12 +140,22 @@ function get_shopping_cart(email) {
     });
 }
 
-function add_to_cart(email, product_name, callback) {
+function add_to_cart(email, product_name, quantity, callback) {
     firebase.database().ref('product/' + product_name).once('value').then(function(snapshot){
         var product = snapshot.val();
-        firebase.database().ref('users/' + email.split("@")[0] + '/Cart/' + product_name).set({
-            Product: product
-        });
-        callback(product);
+        if(product.Stock > quantity) {
+            firebase.database().ref('users/' + email.split("@")[0] + '/Cart/' + product_name).set({
+                ProductName: product.ProductName,
+                Quantity: quantity,
+                Image: product.Image,
+                Description: product.Description,
+                Market: product.Market,
+                Seller: product.Seller,
+                Price: product.Price
+            });
+            callback(product);
+        } else {
+            callback("jebaited");
+        } 
     });   
 }
