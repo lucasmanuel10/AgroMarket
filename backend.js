@@ -140,21 +140,23 @@ function get_shopping_cart(email) {
     });
 }
 
-function add_to_cart(email, product_name) {
-    firebase.database().ref('products/' + product_name).once('value').then(function(snapshot){
+function add_to_cart(email, product_name, callback) {
+    firebase.database().ref('product/' + product_name).once('value').then(function(snapshot){
         var stock = snapshot.val().Stock;
-        if(stock > 0 ) {
-            firebase.database().ref('users/' + email.split("@")[0]).once('value').then(function(snapshot) {
-                var cart = snapshot.val().cart; 
-                cart.push(product_name);
-                firebase.database().ref('users/' + email.split("@")[0]).set({
-                    Cart: cart
-                });
-                callback(cart);
+        firebase.database().ref('users/' + email.split("@")[0]).once('value').then(function(snapshot) {
+            var cart = snapshot.val().cart; 
+            cart.push(product_name);
+            firebase.database().ref('users/' + email.split("@")[0]).set({
+                Cart: cart
             });
-        } else {
-            var cart = [];
+            if(stock > 1) {
+                stock = stock -1;
+                firebase.database().ref('product/' + product_name).set({
+                    Stock: stock
+                });
+            } else
+                firebase.database().ref('product/' + product_name).remove(); 
             callback(cart);
-        }
+        });   
     });  
 }
