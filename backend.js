@@ -143,9 +143,10 @@ function get_shopping_cart(email) {
 function add_to_cart(email, product_name, callback) {
     firebase.database().ref('product/' + product_name).once('value').then(function(snapshot){
         var stock = snapshot.val().Stock;
+        var product = snapshot.val();
         firebase.database().ref('users/' + email.split("@")[0]).once('value').then(function(snapshot) {
             var cart = snapshot.val().Cart; 
-            console.log(cart)
+            cart.push(product);
             firebase.database().ref('users/' + email.split("@")[0]).set({
                 Cart: cart
             });
