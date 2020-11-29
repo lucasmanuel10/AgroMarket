@@ -63,8 +63,8 @@
       </div>  
     </div>
     
-    <div class="offset-md-2 col-md-8 my-3">
-      <button type="button" class="btn btn-success btn-block">Avançar com a compra</button>
+    <div id="advanceId" class="offset-md-2 col-md-8 my-3">
+      
     </div>
   </div>
   
@@ -194,6 +194,8 @@
         }
         x += '<div class="text-center mt-3"><h5>Total: ' + total +' €</h5></div>';
         document.getElementById("cartId").innerHTML = x;
+	if(total>0)
+		document.getElementById("advanceId").innerHTML = '<button type="button" class="btn btn-success btn-block">Avançar com a compra</button>';
     });
   }
 
