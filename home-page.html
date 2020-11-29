@@ -211,7 +211,11 @@
   }
 
   function addItemToCart(item){
-    console.log(item);
+	console.log(item);
+	var email = window.location.hash.substr(1);
+	add_to_cart(email, item, function(){
+		console.log("done xd");
+	});
   }
 
 
