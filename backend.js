@@ -54,6 +54,13 @@ function register(first_name, last_name, email, password, account_type, callback
     });    
 }
 
+function get_user(email, callback) {
+    firebase.database().ref('users/' + email.split("@")[0]).once('value').then(function(snapshot){
+        callback(snapshot.toJSON());
+    });
+}
+
+
 function change_account_type(email, type, callback) {
     firebase.database().ref('users/' + email.split("@")[0]).once('value').then(function(snapshot) {
         var user = snapshot.val();
