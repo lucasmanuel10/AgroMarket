@@ -183,9 +183,8 @@ function finish_purchase(email,montante, callback) {
         Date:  completeDate,
         Total: montante
     }); 
-    firebase.database().ref('users/' + email.split("@")[0] + '/Cart/').once('value').then(function(snapshot) {  
-        snapshot.forEach(function(childSnapshot) {
-            
+    firebase.database().ref('users/' + email.split("@")[0] + '/Cart').once('value').then(function(snapshot) {  
+        snapshot.forEach(function(childSnapshot) { 
             var product = childSnapshot.val();
             console.log(product);
             firebase.database().ref('users/' + email.split("@")[0] + '/History/' + order +'/Produtos/' + product.ProductName).set({
@@ -197,13 +196,12 @@ function finish_purchase(email,montante, callback) {
                 Seller: product.Seller,
                 Price: product.Price
             });
-            console.log("remove "+product.ProductName)
-            firebase.database().ref('users/' + email.split("@")[0] + '/Cart/' + product.ProductName).remove();
         });
-        console.log("before callback")
+        firebase.database().ref('users/' + email.split("@")[0] + '/Cart/').update(null);
         callback();
     });
 }
+
 function get_history(email, callback) {
     firebase.database().ref('users/' + email.split("@")[0] + '/History/').once('value').then(function(snapshot) {
         var products = snapshot.val();
