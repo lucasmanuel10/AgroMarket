@@ -67,7 +67,6 @@
         <h2 class="text-center">HISTÓRICO DE COMPRAS</h2>
 
         <div id="semCompraId">
-        <!--  <p class="text-center">Ainda não efetuou nenhuma compra.</p>  -->
 
           <table class="table mt-5">
             <thead>
@@ -77,9 +76,10 @@
                 <th scope="col" class="text-center">Data de Compra</th>
                 <th scope="col" class="text-center">Valor</th>
               </tr>
+              
             </thead>
             <tbody id="encomendas">
-              
+              <p class="text-center">Ainda não efetuou nenhuma compra.</p>
             </tbody>
           </table>
 
@@ -213,16 +213,10 @@
           var state = products[p].State;
           var date = products[p].Date;
           var total = products[p].Total;
-
           x = '<tr><th scope="row" class="text-center">'+nr+'</th><td class="text-center">'+state+'</td><td class="text-center">'+date+'</td><td class="text-center">'+total+' €</td><td class="text-center"><a href="rate.html?nr='+nr+'#'+email+'">Ver Ecomenda</a></td></tr>';
         }
         document.getElementById("encomendas").innerHTML = x;
-      } else {
-        console.log(products);
-        x = '<p class="text-center">Ainda não efetuou nenhuma compra.</p>';
-        document.getElementById("semCompraId").innerHTML = x;
-      } 
-    
+      }     
   });    
 }
 </script>
