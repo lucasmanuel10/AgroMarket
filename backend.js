@@ -242,17 +242,6 @@ function add_schedule(email, market, date, callback) {
 }
 
 function remove_schedule(email,callback) {
-    firebase.database().ref('users/' + email.split("@")[0] + '/Schedule').once('value').then(function(snapshot) {
-        var lastSchedule = null;
-        snapshot.forEach(function(childSnapshot){
-            lastSchedule = childSnapshot.val();
-        });
-        if(lastSchedule != null) {
-            firebase.database().ref('users/' + email.split("@")[0] + '/Schedule/' + lastSchedule.Id).remove();
-            callback(true);
-        } else {
-            callback(false);
-        }
-    });
-    
+    firebase.database().ref('users/' + email.split("@")[0] + '/Schedule').remove();
+    callback(true);  
 }
