@@ -184,27 +184,13 @@ function finish_purchase(email,montante, callback) {
             State: "Concluído",
             Date:  completeDate,
             Total: montante,
-            History: []
+            Produtos: snapshot.val()
         }).then(function(){
-            snapshot.forEach(function(childSnapshot) {        
-                var product = childSnapshot.val();
-                console.log(product);
-                firebase.database().ref('users/' + email.split("@")[0] + '/History/' + order +'/Produtos/' + product.ProductName).set({
-                    ProductName: product.ProductName,
-                    Quantity: product.Quantity,
-                    Image: product.Image,
-                    Description: product.Description,
-                    Market: product.Market,
-                    Seller: product.Seller,
-                    Price: product.Price
-                });
                 firebase.database().ref('users/' + email.split("@")[0]).update({
                     Cart: null
                 });
-                callback(false);  
-            });
-            callback(true);
-        });
+                callback();  
+        });   
     });
 }
 function get_history(email, callback) {
