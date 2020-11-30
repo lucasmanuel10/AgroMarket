@@ -184,7 +184,7 @@ function finish_purchase(email,montante, callback) {
             State: "Concluído",
             Date:  completeDate,
             Total: montante,
-            Produtos: []
+            History: []
         }).then(function(){
             snapshot.forEach(function(childSnapshot) {        
                 var product = childSnapshot.val();
