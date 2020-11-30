@@ -188,7 +188,7 @@ function finish_purchase(email,montante, callback) {
             var product = childSnapshot.val();
             firebase.database().ref('users/' + email.split("@")[0] + '/History/' + order +'/Produtos/' + product.ProductName).set({
                 ProductName: product.ProductName,
-                Quantity: product.Stock,
+                Quantity: product.Quantity,
                 Image: product.Image,
                 Description: product.Description,
                 Market: product.Market,
