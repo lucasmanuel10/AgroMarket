@@ -184,27 +184,28 @@ function finish_purchase(email,montante, callback) {
             State: "Concluído",
             Date:  completeDate,
             Total: montante
-        }); 
-        snapshot.forEach(function(childSnapshot) {        
-            var product = childSnapshot.val();
-            console.log(product);
-            firebase.database().ref('users/' + email.split("@")[0] + '/History/' + order +'/Produtos/' + product.ProductName).set({
-                ProductName: product.ProductName,
-                Quantity: product.Quantity,
-                Image: product.Image,
-                Description: product.Description,
-                Market: product.Market,
-                Seller: product.Seller,
-                Price: product.Price
-            });
+        }).then(function(){
+            snapshot.forEach(function(childSnapshot) {        
+                var product = childSnapshot.val();
+                console.log(product);
+                firebase.database().ref('users/' + email.split("@")[0] + '/History/' + order +'/Produtos/' + product.ProductName).set({
+                    ProductName: product.ProductName,
+                    Quantity: product.Quantity,
+                    Image: product.Image,
+                    Description: product.Description,
+                    Market: product.Market,
+                    Seller: product.Seller,
+                    Price: product.Price
+                });
+            }).then(function() {
+                firebase.database().ref('users/' + email.split("@")[0]).update({
+                    Cart: null
+                });
+                callback();  
+            });     
         });
-        firebase.database().ref('users/' + email.split("@")[0]).update({
-            Cart: null
-        });
-        callback();
     });
 }
-
 function get_history(email, callback) {
     firebase.database().ref('users/' + email.split("@")[0] + '/History/').once('value').then(function(snapshot) {
         var products = snapshot.val();
