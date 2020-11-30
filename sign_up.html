@@ -43,8 +43,14 @@
             <label class="form-check-label" for="exampleCheck1">Pretendo vender produtos</label>
           </div>
           <div id="seller_code" class="form-group pt-2" style="display: none">
-            <label for="exampleInputEmail1">Codigo de vendedor</label>
-            <input type="text" class="form-control" id="code">
+            <div>
+                <label for="exampleInputEmail1">Codigo de vendedor</label>
+                <input type="number" class="form-control" id="code">
+		    </div>
+            <div>
+                <label for="exampleInputEmail1">Contacto Telefónico</label>
+                <input type="number" class="form-control" id="mobile">
+		    </div>
           </div>
           <div class="pt-3">
             <button onclick="register_()" type="button" class="btn btn-primary btn-block">Registar</button>
@@ -71,10 +77,11 @@
     var email = document.getElementById('emailId').value;
     var password = document.getElementById('passwordId').value;
     var account_type = -1;
+    var mobile = -1;
     if(document.getElementById("seller_code").style.display != "none") {
       account_type = document.getElementById('code').value;
-    }
-    
+        mobile = document.getElementById('mobile').value;
+    }  
     register(name, lname, email, password, account_type, function(x) {
       console.log(x);
       if(x)
