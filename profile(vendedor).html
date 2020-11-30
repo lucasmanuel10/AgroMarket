@@ -529,18 +529,25 @@
     function loadDate() {
         var email = window.location.hash.substr(1);
         var market_ = document.getElementById("mercado").value;
-        var market = "";
-        if(market_ == 1)
-            market = "Mercado da Ribeira";
-        else if(market_ == 2)
-            market = "Mercado de Santana";
-        else
-            market = "Mercado de Faro";
         var date = document.getElementById("date").value;
-        add_schedule(email, market, date, function(id) {
-            console.log(id);
-        });
-        addSchedule(market, date);
+        if((market_ != 1 && market_!=2 && market_!=3) || date == "dd-mm-aaaa" ) {
+          $(document).ready(function(){ 
+            $('[data-toggle="popover"]').popover(); 
+          });
+        } else {
+          var market = "";
+          if(market_ == 1)
+              market = "Mercado da Ribeira";
+          else if(market_ == 2)
+              market = "Mercado de Santana";
+          else
+              market = "Mercado de Faro";
+          
+          add_schedule(email, market, date, function(id) {
+              console.log(id);
+          });
+          addSchedule(market, date);
+        }   
     }
 
 function removeDate() {
