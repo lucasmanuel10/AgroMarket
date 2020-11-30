@@ -302,6 +302,7 @@
     document.getElementById("idMarket").style.display = "block";    
   }
   function loadCompra() {
+    loadNavbar();
     var email = window.location.hash.substr(1);
     var x = '';
     get_shopping_cart(email, function(products){
