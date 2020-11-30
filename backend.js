@@ -227,15 +227,10 @@ function get_schedule(email, callback) {
 }
 
 function add_schedule(email, market, date, callback) {
-    var month = date.getUTCMonth() + 1; 
-    var day = date.getUTCDate();
-    var year = date.getUTCFullYear();
-    var completeDate = day.toString() + month.toString() + year.toString();
-    var completeDate_ = day.toString() + '/'+ month.toString() +'/'+ year.toString();
-    var id = market + completeDate;
+    var id = market + date.split("/");
     firebase.database().ref('users/' + email.split("@")[0] + '/Schedule/' + id).set({
         Market: market,
-        Date: completeDate_,
+        Date: date,
         Id: id
     });
     callback(id);
