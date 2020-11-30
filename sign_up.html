@@ -44,7 +44,7 @@
           </div>
           <div id="seller_code" class="form-group pt-2" style="display: none">
             <label for="exampleInputEmail1">Codigo de vendedor</label>
-            <input type="text" class="form-control" id="name">
+            <input type="text" class="form-control" id="code">
           </div>
           <div class="pt-3">
             <button onclick="register_()" type="button" class="btn btn-primary btn-block">Registar</button>
@@ -70,11 +70,10 @@
     var lname = document.getElementById('lnameId').value;
     var email = document.getElementById('emailId').value;
     var password = document.getElementById('passwordId').value;
-    var account_type = true;
+    var account_type = -1;
     if(document.getElementById("seller_code").style.display == "none") {
-      account_type = false;
+      account_type = document.getElementById('code').value;
     }
-    console.log("register_");
     
     register(name, lname, email, password, account_type, function(x) {
       console.log(x);
