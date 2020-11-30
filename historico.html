@@ -205,15 +205,20 @@
   function loadEncomendas() {
     var email = window.location.hash.substr(1);
     get_history(email, function(products){
-      for(p in products){
-        var nr = products[p].Order;
-        var state = products[p].State;
-        var date = products[p].Date;
-        var total = products[p].Total;
+      var x = "";
+      if(products != []) {
+        for(p in products){
+          var nr = products[p].Order;
+          var state = products[p].State;
+          var date = products[p].Date;
+          var total = products[p].Total;
 
-        var x = '<tr><th scope="row" class="text-center">'+nr+'</th><td class="text-center">'+state+'</td><td class="text-center">'+date+'</td><td class="text-center">'+total+' €</td><td class="text-center"><a href="rate.html?nr='+nr+'#'+email+'">Ver Ecomenda</a></td></tr>';
-      }
-      document.getElementById("encomendas").innerHTML = x;
-    });    
-  }
+          x = '<tr><th scope="row" class="text-center">'+nr+'</th><td class="text-center">'+state+'</td><td class="text-center">'+date+'</td><td class="text-center">'+total+' €</td><td class="text-center"><a href="rate.html?nr='+nr+'#'+email+'">Ver Ecomenda</a></td></tr>';
+        }
+      } else {
+        x = '<p class="text-center">Ainda não efetuou nenhuma compra.</p>';
+      } 
+    document.getElementById("encomendas").innerHTML = x;
+  });    
+}
 </script>
