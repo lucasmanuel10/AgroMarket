@@ -525,7 +525,7 @@
           for(schedule in schedules) {
             var market = schedules[schedule].Market;
             var date_ = schedules[schedule].Date;
-            date_ = date.split('/');
+            date_ = date_.split('/');
             var date = date_[3] + '-' + date[2] + '-' + date[1];
             var x = '<div class="form-row" id="divAgenda"><div class="col-md-6 mb-3"><label for="validationCustom02"><h5>Mercado:</h5></label><select id="mercado" class="custom-select border border-dark rounded-0" required><option selected>' + market + '</option><option value="1">Mercado da Ribeira</option><option value="2">Mercado de Santana</option><option value="3">Mercado de Faro</option></select><div class="valid-feedback">Looks good!</div></div><div class="col-md-6 mb-3"><label for="validationCustomUsername"><h5>Data:</h5></label><input id="date" type="date" value=' + date + ' style="width: 225px; height: 38px"></div></div>';
             document.getElementById("schedulesId").innerHTML += x;
