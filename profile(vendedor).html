@@ -590,9 +590,9 @@ function removeDate() {
 	  loadNavbar();
 	  var email = window.location.hash.substr(1);
 	  get_user(email, function(user){
-	    console.log(user);
-	    x = '<p class="card-text"><strong>Número de Vendedor:</strong> ' + user.nVendedor + '</p>';
-	    x += '<p class="card-text"><strong>Contacto Telefónico:</strong> ' + user.cTelefone + '</p>';
+	    console.log(user);		  
+	    x = '<p class="card-text"><strong>Número de Vendedor:</strong> ' + user.Account_type + '</p>';
+	    x += '<p class="card-text"><strong>Contacto Telefónico:</strong> ' + user.Mobile + '</p>';
 	    document.getElementById("vendedorInfo").innerHTML = x;
 	  });
 	 } 
