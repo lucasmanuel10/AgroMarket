@@ -35,10 +35,8 @@ function register(first_name, last_name, email, password, account_type, callback
   
     firebase.database().ref('users/' + email.split("@")[0]).once('value').then(function(snapshot){
         user = snapshot.val();
-        var x = true;
-        if(user != null)
-            x = false;
-        else {
+        var x = number;
+        if(user == null) {
             firebase.database().ref('users/' + email.split("@")[0]).set({
                 FirstName: first_name,
                 LastName: last_name,
@@ -48,7 +46,6 @@ function register(first_name, last_name, email, password, account_type, callback
                 Cart: [],
                 History: []
             });
-            x = true;
          } 
         callback(x);
     });    
@@ -70,10 +67,10 @@ function change_account_type(email, type, callback) {
 
 function is_seller(email, callback) {
     firebase.database().ref('users/' + email.split("@")[0]).once('value').then(function(snapshot) {
-        var x = true;
+        var x = false;
         var user= snapshot.val();
-        if(user.AccountType != true)
-            x = false;
+        if(user.AccountType >0)
+            x = true;
         callback(x);
     });
 }
@@ -217,13 +214,9 @@ function get_order_history(email, order, callback) {
 function get_schedule(email, callback) {
     firebase.database().ref('users/' + email.split("@")[0] + '/Schedule').once('value').then(function(snapshot) {
         var schedule = snapshot.val();
-        var schedule_ = [];
         if(schedule != null) {
-            snapshot.forEach(function(childSnapshot) {
-                schedule_.push(childSnapshot.toJSON());
-            });
-        }
-        callback(schedule_);
+            callback(snapshot.toJSON());
+        } 
     });
 }
 
