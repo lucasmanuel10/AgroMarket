@@ -252,7 +252,7 @@
                       <input type="number" class="form-control" id="inputTelefone" placeholder="Contacto Telefónico" required>
                     </div><br>
                     <div id="alerta" class="alert alert-danger" role="alert">
-  						Preencha os dois campos abaixo!
+  						
 					</div>
                   </div>
                 </form>
@@ -410,7 +410,8 @@
    	});
    }else{
 	   if(count>0){
-	   	document.getElementById("alerta").innerHTML;
+		x = '<p class="card-text">Preencha os dois campos abaixo!</p>';
+	   	document.getElementById("alerta").innerHTML = x;
 	   	count++;
 	   }   
 	}
