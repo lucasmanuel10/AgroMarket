@@ -177,14 +177,15 @@ function finish_purchase(email,montante, callback) {
     var day = dateObj.getUTCDate();
     var year = dateObj.getUTCFullYear();
     var completeDate = day + "/" + month + "/" + year;
-    firebase.database().ref('users/' + email.split("@")[0] + '/History/' + order).set({
-        Order: order,
-        State: "Concluído",
-        Date:  completeDate,
-        Total: montante
-    }); 
-    firebase.database().ref('users/' + email.split("@")[0] + '/Cart').once('value').then(function(snapshot) {  
-        snapshot.forEach(function(childSnapshot) { 
+
+    firebase.database().ref('users/' + email.split("@")[0] + '/Cart/').once('value').then(function(snapshot) {  
+        firebase.database().ref('users/' + email.split("@")[0] + '/History/' + order).set({
+            Order: order,
+            State: "Concluído",
+            Date:  completeDate,
+            Total: montante
+        }); 
+        snapshot.forEach(function(childSnapshot) {        
             var product = childSnapshot.val();
             console.log(product);
             firebase.database().ref('users/' + email.split("@")[0] + '/History/' + order +'/Produtos/' + product.ProductName).set({
@@ -197,7 +198,9 @@ function finish_purchase(email,montante, callback) {
                 Price: product.Price
             });
         });
-        firebase.database().ref('users/' + email.split("@")[0] + '/Cart/').update(null);
+        firebase.database().ref('users/' + email.split("@")[0]).update({
+            Cart: null
+        });
         callback();
     });
 }
