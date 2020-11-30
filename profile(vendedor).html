@@ -526,14 +526,12 @@
     }
   }
 
-    function loadDate() {
+   function loadDate() {
         var email = window.location.hash.substr(1);
         var market_ = document.getElementById("mercado").value;
         var date = document.getElementById("date").value;
-        if((market_ != 1 && market_!=2 && market_!=3) || date == "dd-mm-aaaa" ) {
-          $(document).ready(function(){ 
-            $('[data-toggle="popover"]').popover(); 
-          });
+        if((market_ != 1 && market_!=2 && market_!=3) || date.toString()=="dd-mm-aaaa" ) {
+         
         } else {
           var market = "";
           if(market_ == 1)
@@ -549,6 +547,7 @@
           addSchedule(market, date);
         }   
     }
+
 
 function removeDate() {
   var email = window.location.hash.substr(1);
