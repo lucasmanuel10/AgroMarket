@@ -32,11 +32,14 @@
 						<a class="nav-link text-dark" onclick="homepage()" style="cursor: pointer;"><b>Início</b></a>
 					</li>
 				</ul>
-				<div class="mr-3">
+				<div>
 					<button onclick="sellItem()" id="sellId" class="btn btn-primary btn-success" role="button" style="display: none">Vender</button>
 				</div>
 				<div>
-					<a href="https://lucasmanuel10.github.io/AgroMarket/my-shopping-cart.html"> <img src="images/empty-car-icon.png" height="40px"> </a> 
+					<a class="notification" onclick="myShoppingCart()" style="cursor: pointer;"> 
+						<img src="images/empty-car-icon.png" height="40px">
+						<span id="shoppingcart" class="badge">0</span>
+					</a>
 				</div> 
 				<div class="dropdown text-center">
 					<a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -45,13 +48,14 @@
 					</a>
 					<div class="dropdown-menu my-dropdown-menu">
 						<a class="dropdown-item" onclick="myProfile()" style="cursor: pointer;">Meu perfil</a>
-						<a class="dropdown-item" href="#">Histórico de compras</a>
+						<a class="dropdown-item" onclick="history()" style="cursor: pointer;">Histórico de compras</a>
 						<hr>
 						<a class="dropdown-item" href="#">Sair</a>
 					</div>
 				</div>     
 			</div>    
-		</nav>
+    </nav>
+	
   <div class="mt-5 container">
     <div class="row">
       <div class="col-md-8 pt-5 pb-5 pl-5 pr-5 bg-light">
