@@ -220,6 +220,8 @@ function get_schedule(email, callback) {
         var schedule = snapshot.val();
         if(schedule != null) {
             callback(snapshot.toJSON());
+        } else {
+            callback([]);
         } 
     });
 }
