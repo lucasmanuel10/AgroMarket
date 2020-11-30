@@ -207,6 +207,7 @@
     get_history(email, function(products){
       var x = "";
       if(products != []) {
+        console.log(products);
         for(p in products){
           var nr = products[p].Order;
           var state = products[p].State;
@@ -216,6 +217,7 @@
           x = '<tr><th scope="row" class="text-center">'+nr+'</th><td class="text-center">'+state+'</td><td class="text-center">'+date+'</td><td class="text-center">'+total+' €</td><td class="text-center"><a href="rate.html?nr='+nr+'#'+email+'">Ver Ecomenda</a></td></tr>';
         }
       } else {
+        console.log(products);
         x = '<p class="text-center">Ainda não efetuou nenhuma compra.</p>';
       } 
     document.getElementById("encomendas").innerHTML = x;
