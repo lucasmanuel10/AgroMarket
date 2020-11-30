@@ -398,7 +398,7 @@
  function passVendedor(){
    var email = window.location.hash.substr(1);
    var number = document.getElementById("inputNVendedor");
-   if((document.getElementById("inputNVendedor").value != null) && (document.getElementById("inputTelefone").value != null)){
+   if((document.getElementById("inputNVendedor").value != "") && (document.getElementById("inputTelefone").value != "")){
    	change_account_type(email, number, function(){
     	 window.location.href = "https://lucasmanuel10.github.io/AgroMarket/profile(vendedor).html#" + email;
    	});
