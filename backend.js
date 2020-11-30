@@ -185,7 +185,9 @@ function finish_purchase(email,montante, callback) {
     }); 
     firebase.database().ref('users/' + email.split("@")[0] + '/Cart/').once('value').then(function(snapshot) {  
         snapshot.forEach(function(childSnapshot) {
+            
             var product = childSnapshot.val();
+            console.log(product);
             firebase.database().ref('users/' + email.split("@")[0] + '/History/' + order +'/Produtos/' + product.ProductName).set({
                 ProductName: product.ProductName,
                 Quantity: product.Quantity,
