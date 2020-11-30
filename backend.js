@@ -151,7 +151,7 @@ function add_to_cart(email, product_name, quantity, callback) {
         if(product.Stock > quantity) {
             firebase.database().ref('users/' + email.split("@")[0] + '/Cart/' + product_name).set({
                 ProductName: product.ProductName,
-                Quantity: product.Quantity,
+                Quantity: quantity,
                 Image: product.Image,
                 Description: product.Description,
                 Market: product.Market,
