@@ -203,6 +203,7 @@
 
 <script>
   function loadEncomendas() {
+	loadNavbar();
     var email = window.location.hash.substr(1);
     get_history(email, function(products){
       var x = "";
