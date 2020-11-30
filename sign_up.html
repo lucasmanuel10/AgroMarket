@@ -80,9 +80,9 @@
     var mobile = -1;
     if(document.getElementById("seller_code").style.display != "none") {
       account_type = document.getElementById('code').value;
-        mobile = document.getElementById('mobile').value;
+      mobile = document.getElementById('mobile').value;
     }  
-    register(name, lname, email, password, account_type, function(x) {
+    register(name, lname, email, password, account_type, mobile, function(x) {
       console.log(x);
       if(x)
         window.location.href = "https://lucasmanuel10.github.io/AgroMarket/home-page.html#" + email;
