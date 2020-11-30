@@ -188,6 +188,7 @@
     var myParam = urlParams.get('montante').split("#");
     var montante = myParam[0];
     function loadMontante() {
+	    loadNavbar();
         document.getElementById("montanteId").innerHTML = document.getElementById("montanteId").innerHTML + '<p class="mb-0"><b>Montante: </b> ' + montante + ' </p>';    
     }
     function goToHomepage() {
