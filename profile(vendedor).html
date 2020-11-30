@@ -592,7 +592,7 @@ function removeDate() {
 	  get_user(email, function(user){
 	    console.log(user);
 	    x = '<p class="card-text"><strong>Número de Vendedor:</strong> ' + user.nVendedor + '</p>';
-	    x += '<p class="card-text"><strong>Contacto Telefónico:</strong> ' + user.Telefone + '</p>';
+	    x += '<p class="card-text"><strong>Contacto Telefónico:</strong> ' + user.cTelefone + '</p>';
 	    document.getElementById("vendedorInfo").innerHTML = x;
 	  });
 	 } 
