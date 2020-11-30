@@ -66,7 +66,7 @@
       <div class="offset-md-2 col-md-8 pt-5 pb-5 pl-5 pr-5 bg-light">
         <h2 class="text-center">HISTÓRICO DE COMPRAS</h2>
 
-        <div>
+        <div id="semCompraId">
         <!--  <p class="text-center">Ainda não efetuou nenhuma compra.</p>  -->
 
           <table class="table mt-5">
@@ -216,11 +216,13 @@
 
           x = '<tr><th scope="row" class="text-center">'+nr+'</th><td class="text-center">'+state+'</td><td class="text-center">'+date+'</td><td class="text-center">'+total+' €</td><td class="text-center"><a href="rate.html?nr='+nr+'#'+email+'">Ver Ecomenda</a></td></tr>';
         }
+        document.getElementById("encomendas").innerHTML = x;
       } else {
         console.log(products);
         x = '<p class="text-center">Ainda não efetuou nenhuma compra.</p>';
+        document.getElementById("semCompraId").innerHTML = x;
       } 
-    document.getElementById("encomendas").innerHTML = x;
+    
   });    
 }
 </script>
