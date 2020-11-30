@@ -70,7 +70,7 @@
     </nav>
 
 
-    <div class="mt-5">
+    <div class="my-5">
       <div class="offset-md-2 col-md-8 pt-5 pb-5 pl-5 pr-5 bg-light">
         <h2 class="text-center" id="title">ENCOMENDA #X</h2>
         <hr>
@@ -82,7 +82,6 @@
 
         </div>
     </div>
-    <hr>
 
   </div>
 	<footer class="page-footer font-small blue-grey lighten-5">
@@ -214,6 +213,7 @@
   var order = myParam[0];
 
   function loadOrderProducts() {
+    loadNavbar();
     const urlParams = new URLSearchParams(window.location.search);
     var email = window.location.hash.substr(1);
     console.log(order);
