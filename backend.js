@@ -59,12 +59,15 @@ function get_user(email, callback) {
 }
 
 
-function change_account_type(email, type, callback) {
+
+function change_account_type(email, type, mobile, callback) {
     firebase.database().ref('users/' + email.split("@")[0]).update({
-        AccountType: type
+        AccountType: type,
+        Mobile: mobile
       });
       callback();
 }
+
 
 function is_seller(email, callback) {
     firebase.database().ref('users/' + email.split("@")[0]).once('value').then(function(snapshot) {
