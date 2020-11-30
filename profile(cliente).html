@@ -256,7 +256,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="submit" onclick="passVendedor()" class="btn btn-success">Guardar Alterações</button>
+                <button type="button" onclick="passVendedor()" class="btn btn-success">Guardar Alterações</button>
               </div>
             </div>
           </div>
@@ -398,9 +398,11 @@
  function passVendedor(){
    var email = window.location.hash.substr(1);
    var number = document.getElementById("inputNVendedor");
-   change_account_type(email, number, function(){
-     window.location.href = "https://lucasmanuel10.github.io/AgroMarket/profile(vendedor).html#" + email;
-   });
+   if((document.getElementById("inputNVendedor") != null) && (document.getElementById("inputTelefone") != null)){
+   	change_account_type(email, number, function(){
+    	 window.location.href = "https://lucasmanuel10.github.io/AgroMarket/profile(vendedor).html#" + email;
+   	});
+   }
  }
 
  function loadProfile() {
