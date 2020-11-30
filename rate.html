@@ -27,19 +27,22 @@
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-
+		
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item">
 						<a class="nav-link text-dark" onclick="homepage()" style="cursor: pointer;"><b>Início</b></a>
 					</li>
 				</ul>
-				<div class="mr-3">
+				<div>
 					<button onclick="sellItem()" id="sellId" class="btn btn-primary btn-success" role="button" style="display: none">Vender</button>
 				</div>
 				<div>
-					<a href="https://lucasmanuel10.github.io/AgroMarket/my-shopping-cart.html"> <img src="images/empty-car-icon.png" height="40px"> </a>
-				</div>
+					<a class="notification" onclick="myShoppingCart()" style="cursor: pointer;"> 
+						<img src="images/empty-car-icon.png" height="40px">
+						<span id="shoppingcart" class="badge">0</span>
+					</a>
+				</div> 
 				<div class="dropdown text-center">
 					<a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<img src="images/profile_photo.jpg" height="30px" alt=""><br>
@@ -47,13 +50,13 @@
 					</a>
 					<div class="dropdown-menu my-dropdown-menu">
 						<a class="dropdown-item" onclick="myProfile()" style="cursor: pointer;">Meu perfil</a>
-						<a class="dropdown-item" href="#">Histórico de compras</a>
+						<a class="dropdown-item" onclick="history()" style="cursor: pointer;">Histórico de compras</a>
 						<hr>
 						<a class="dropdown-item" href="#">Sair</a>
 					</div>
-				</div>
-			</div>
-		</nav>
+				</div>     
+			</div>    
+    </nav>
 
 
     <div class="mt-5">
