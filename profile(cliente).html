@@ -239,14 +239,14 @@
               <div class="modal-body">
                 <form>
                   <div class="form-group row">
-                      <label for="inputApelido" class="col-sm-10 col-form-label"><h5>Insira o Seu Número de Vendedor:</h5></label>
+                      <label for="inputNVendedor" class="col-sm-10 col-form-label"><h5>Insira o Seu Número de Vendedor:</h5></label>
                       <br><br>
                     <div class="col-sm-10">
                       <input type="text" class="form-control" id="inputNVendedor" placeholder="Número de Vendedor" required>
                     </div>
                   </div>
                   <div class="form-group row">
-                      <label for="inputApelido" class="col-sm-10 col-form-label"><h5>Insira o Contacto Telefónico:</h5></label>
+                      <label for="inputTelefone" class="col-sm-10 col-form-label"><h5>Insira o Contacto Telefónico:</h5></label>
                       <br><br>
                     <div class="col-sm-10">
                       <input type="tel" class="form-control" id="inputTelefone" placeholder="Contacto Telefónico" required>
@@ -397,7 +397,8 @@
  
  function passVendedor(){
    var email = window.location.hash.substr(1);
-   change_account_type(email, true, function(){
+   var number = document.getElementById("inputNVendedor");
+   change_account_type(email, number, function(){
      window.location.href = "https://lucasmanuel10.github.io/AgroMarket/profile(vendedor).html#" + email;
    });
  }
