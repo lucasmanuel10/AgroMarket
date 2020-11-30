@@ -514,9 +514,11 @@
     var counter = 0;
     var email = window.location.hash.substr(1);
 	  console.log("O BENFICA TÁ A PERDER");
-    if(counter > 0)
+    if(counter > 0) {
       counter ++;
-    else {
+      console.log("manuuuuh");
+    } else {
+	console.log("5 +5 dá 20");
       get_schedule(email, function(schedules) {
         console.log(schedules);
         if(schedules!=null) {
