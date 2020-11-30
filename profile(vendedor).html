@@ -584,9 +584,10 @@ function removeDate() {
     x += '<p class="card-text"><strong>Password:</strong>**********</p>';
     document.getElementById("profile-info").innerHTML = x;
   });
+  loadVendedor();
  } 
  
- function loadProfile() {
+ function loadVendedor() {
 	  loadNavbar();
 	  var email = window.location.hash.substr(1);
 	  get_user(email, function(user){
