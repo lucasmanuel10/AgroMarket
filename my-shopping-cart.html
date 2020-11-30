@@ -178,6 +178,7 @@
 
 <script>
   function loadCart() {
+	loadNavbar();
     var x = '';
     var email = window.location.hash.substr(1);
     get_shopping_cart(email, function(products){
