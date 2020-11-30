@@ -201,8 +201,9 @@ function finish_purchase(email,montante, callback) {
                 firebase.database().ref('users/' + email.split("@")[0]).update({
                     Cart: null
                 });
-                callback();  
-            });   
+                callback(false);  
+            });
+            callback(true);
         });
     });
 }
