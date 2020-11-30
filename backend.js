@@ -197,7 +197,7 @@ function finish_purchase(email,montante, callback) {
                 Seller: product.Seller,
                 Price: product.Price
             });
-            console.log("remove p")
+            console.log("remove "+product.ProductName)
             firebase.database().ref('users/' + email.split("@")[0] + '/Cart/' + product.ProductName).remove();
         });
         console.log("before callback")
