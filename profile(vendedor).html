@@ -571,6 +571,7 @@ function removeDate() {
  }
 
  function loadProfile() {
+  loadNavbar();
   var email = window.location.hash.substr(1);
   get_user(email, function(user){
     console.log(user);
