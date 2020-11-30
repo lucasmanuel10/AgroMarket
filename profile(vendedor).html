@@ -86,11 +86,10 @@
           <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" onclick = "passCliente()" checked>
             <label class="custom-control-label" for="defaultChecked">Perfil de Vendedor</label>
         </div>
-          <br>
       	<br><hr>
       	<div id="vendedorInfo">
     
-        </div>
+        </div><br>
           <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
             Dados de Pagamento
@@ -578,10 +577,10 @@ function removeDate() {
   var email = window.location.hash.substr(1);
   get_user(email, function(user){
     console.log(user);
-    x = '<p class="card-text"><strong>Nome Próprio:</strong> ' + user.FirstName + '</p>';
-    x += '<p class="card-text"><strong>Apelido:</strong> ' + user.LastName + '</p>';
-    x += '<p class="card-text"><strong>Email:</strong> ' + user.Email + '</p>';
-    x += '<p class="card-text"><strong>Password:</strong>**********</p>';
+    x = '<p class="card-text"><h4>Nome Próprio:</h4> ' + user.FirstName + '</p>';
+    x += '<p class="card-text"><h4>Apelido:</h4> ' + user.LastName + '</p>';
+    x += '<p class="card-text"><h4>Email:</h4> ' + user.Email + '</p>';
+    x += '<p class="card-text"><h4>Password:</h4>**********</p>';
     document.getElementById("profile-info").innerHTML = x;
   });
   loadVendedor();
@@ -592,8 +591,8 @@ function removeDate() {
 	  var email = window.location.hash.substr(1);
 	  get_user(email, function(user){
 	    console.log(user);		  
-	    x = '<p class="card-text"><strong>Número de Vendedor:</strong> ' + user.AccountType + '</p>';
-	    x += '<p class="card-text"><strong>Contacto Telefónico:</strong> ' + user.Mobile + '</p>';
+	    x = '<p class="card-text"><h4>Número de Vendedor:</h4> ' + user.AccountType + '</p>';
+	    x += '<p class="card-text"><h4>Contacto Telefónico:</h4> ' + user.Mobile + '</p>';
 	    document.getElementById("vendedorInfo").innerHTML = x;
 	  });
 	 } 
