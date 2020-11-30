@@ -35,7 +35,7 @@ function register(first_name, last_name, email, password, account_type, callback
   
     firebase.database().ref('users/' + email.split("@")[0]).once('value').then(function(snapshot){
         user = snapshot.val();
-        var x = number;
+        var x = account_type;
         if(user == null) {
             firebase.database().ref('users/' + email.split("@")[0]).set({
                 FirstName: first_name,
