@@ -184,7 +184,7 @@ function finish_purchase(email,montante, callback) {
             State: "Concluído",
             Date:  completeDate,
             Total: montante,
-            Produtos: snapshot.val()
+            Produtos: snapshot.getValue()
         }).then(function(){
                 firebase.database().ref('users/' + email.split("@")[0]).update({
                     Cart: null
