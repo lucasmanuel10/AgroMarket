@@ -251,6 +251,9 @@
                     <div class="col-sm-10">
                       <input type="number" class="form-control" id="inputTelefone" placeholder="Contacto Telefónico" required>
                     </div>
+                    <div id="alerta" class="alert alert-danger" role="alert">
+  						Preencha os dois campos abaixo!
+					</div>
                   </div>
                 </form>
               </div>
@@ -405,7 +408,7 @@
     	 window.location.href = "https://lucasmanuel10.github.io/AgroMarket/profile(vendedor).html#" + email;
    	});
    }else{
-	   alert("Insira os dois campos abaixo!")
+	   document.getElementById("profile-info").innerHTML;
    }
  }
 
