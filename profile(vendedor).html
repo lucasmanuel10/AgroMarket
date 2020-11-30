@@ -90,7 +90,7 @@
             Dados de Pagamento
         </button>
           
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalAgenda">
+        <button type="button" onclick="loadDates()" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalAgenda">
             Adicionar/Editar Agenda
         </button>
 
@@ -105,25 +105,14 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form class="needs-validation" novalidate>
-                  <div class="form-row" id="divAgenda">
-                    <div class="col-md-6 mb-3">
-                      <label for="validationCustom02"><h5>Mercado:</h5></label>
-                      <select id="mercado" class="custom-select border border-dark rounded-0" required>
-                          <option selected>Escolha o Mercado</option>
-                          <option value="1">Mercado da Ribeira</option>
-                          <option value="2">Mercado de Santana</option>
-                          <option value="3">Mercado de Faro</option>
-                       </select>
-                      <div class="valid-feedback">
-                        Looks good!
-                      </div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                      <label for="validationCustomUsername"><h5>Data:</h5></label>
-                        <input id="date" type="date" style="width: 225px; height: 38px">
-                    </div>
-                  </div>
+                <form class="needs-validation" novalidate id='schedulesId'>
+                  
+
+
+
+
+
+
                  <div id="Agenda"></div>
                 </form><hr>
                 <button type="button" data-toggle="popover" title="Atenção" data-content="Selecione um mercado/data primeiro" class="btn btn-info" id="plusAgenda" style="float:left">Adicionar Data</button>
@@ -514,6 +503,29 @@
 			});
 	 }
    }
+   counter = 0;
+  function loadDates() {
+    var email = window.location.hash.substr(1);
+    if(counter > 0)
+      counter ++;
+    else {
+      get_schedule(email, function(schedules) {
+        console.log(schedules);
+        if(schedules!=null) {
+          for(schedule in schedules) {
+            var market = schedules[schedule].Market;
+            var date_ = schedules[schedule].Date;
+            date_ = date.split('/');
+            var date = date_[3] + '-' + date[2] + '-' + date[1];
+            var x = '<div class="form-row" id="divAgenda"><div class="col-md-6 mb-3"><label for="validationCustom02"><h5>Mercado:</h5></label><select id="mercado" class="custom-select border border-dark rounded-0" required><option selected>' + market + '</option><option value="1">Mercado da Ribeira</option><option value="2">Mercado de Santana</option><option value="3">Mercado de Faro</option></select><div class="valid-feedback">Looks good!</div></div><div class="col-md-6 mb-3"><label for="validationCustomUsername"><h5>Data:</h5></label><input id="date" type="date" value=' + date + ' style="width: 225px; height: 38px"></div></div>';
+            document.getElementById("schedulesId").innerHTML += x;
+          }
+        }  
+        document.getElementById("schedulesId").innerHTML+='<div class="form-row" id="divAgenda"><div class="col-md-6 mb-3"><label for="validationCustom02"><h5>Mercado:</h5></label><select id="mercado" class="custom-select border border-dark rounded-0" required><option selected>Escolha o Mercado</option><option value="1">Mercado da Ribeira</option><option value="2">Mercado de Santana</option><option value="3">Mercado de Faro</option></select><div class="valid-feedback">Looks good!</div></div><div class="col-md-6 mb-3"><label for="validationCustomUsername"><h5>Data:</h5></label><input id="date" type="date" style="width: 225px; height: 38px"></div></div>';
+        counter ++;
+      });
+    }
+  }
 
     function loadDate() {
         var email = window.location.hash.substr(1);
@@ -531,7 +543,7 @@
         console.log(market);
         console.log(date_);
         add_schedule(email, market, date, function(id) {
-            console.log(id + "gayyy");
+            console.log(id);
         });
     }
 
