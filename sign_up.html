@@ -71,7 +71,7 @@
     var email = document.getElementById('emailId').value;
     var password = document.getElementById('passwordId').value;
     var account_type = -1;
-    if(document.getElementById("seller_code").style.display == "none") {
+    if(document.getElementById("seller_code").style.display != "none") {
       account_type = document.getElementById('code').value;
     }
     
