@@ -72,7 +72,8 @@
 </style>
 
 <script>
-  function loadProduct() {   
+  function loadProduct() {
+	loadNavbar();
     const urlParams = new URLSearchParams(window.location.search);
     var myParam = urlParams.get('produto').split("#");
     var product_name = myParam[0];
