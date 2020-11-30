@@ -401,6 +401,7 @@
  function passVendedor(){
    var email = window.location.hash.substr(1);
    var number = document.getElementById("inputNVendedor").value;
+   var count = 0;
 	 
    var mobile = document.getElementById("inputTelefone").value;
    if((document.getElementById("inputNVendedor").value != "") && (document.getElementById("inputTelefone").value != "")){
@@ -408,8 +409,11 @@
     	 window.location.href = "https://lucasmanuel10.github.io/AgroMarket/profile(vendedor).html#" + email;
    	});
    }else{
-	   document.getElementById("alerta").innerHTML;
-   }
+	   if(count>0){
+	   	document.getElementById("alerta").innerHTML;
+	   	count++;
+	   }   
+	}
  }
 
  function loadProfile() {
