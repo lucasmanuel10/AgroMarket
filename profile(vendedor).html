@@ -566,7 +566,7 @@ function removeDate() {
  
  function passCliente(){
     var email = window.location.hash.substr(1);
-     change_account_type(email, false, function(x){
+     change_account_type(email, -1,-1, function(x){
          console.log(x);
          window.location.href = "https://lucasmanuel10.github.io/AgroMarket/profile(cliente).html#" + email;
      });
