@@ -197,12 +197,13 @@ function finish_purchase(email,montante, callback) {
                     Seller: product.Seller,
                     Price: product.Price
                 });
-            }).then(function() {
                 firebase.database().ref('users/' + email.split("@")[0]).update({
                     Cart: null
                 });
-                callback();  
-            });     
+            })
+               
+            callback();  
+            
         });
     });
 }
