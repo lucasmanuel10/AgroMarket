@@ -30,7 +30,7 @@ function login(email, password, callback) {
     });
 }
 
-function register(first_name, last_name, email, password, account_type, callback) {
+function register(first_name, last_name, email, password, account_type, mobile, callback) {
     var user = null;
   
     firebase.database().ref('users/' + email.split("@")[0]).once('value').then(function(snapshot){
@@ -43,6 +43,7 @@ function register(first_name, last_name, email, password, account_type, callback
                 Email: email,
                 Password: password,
                 AccountType: account_type,
+                Mobile: mobile,
                 Cart: [],
                 History: []
             });
