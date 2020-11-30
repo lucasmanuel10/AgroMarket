@@ -192,11 +192,10 @@
     function goToHomepage() {
         
         var email = window.location.hash.substr(1);
-        finish_purchase(email,montante, function() {
-            console.log("banana com arroz");
+        finish_purchase(email,montante, function(x) {
+            console.log("x");
             window.location.href = "https://lucasmanuel10.github.io/AgroMarket/home-page.html#" + email;
-        });
-        
+        });   
     }
     
 </script>
