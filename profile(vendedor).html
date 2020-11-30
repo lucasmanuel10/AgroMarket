@@ -577,10 +577,10 @@ function removeDate() {
   var email = window.location.hash.substr(1);
   get_user(email, function(user){
     console.log(user);
-    x = '<p class="card-text"><h4>Nome Próprio:</h4> ' + user.FirstName + '</p>';
-    x += '<p class="card-text"><h4>Apelido:</h4> ' + user.LastName + '</p>';
-    x += '<p class="card-text"><h4>Email:</h4> ' + user.Email + '</p>';
-    x += '<p class="card-text"><h4>Password:</h4>**********</p>';
+    x = '<p class="card-text"><h5>Nome Próprio:</h5> ' + user.FirstName + '</p>';
+    x += '<p class="card-text"><h5>Apelido:</h5> ' + user.LastName + '</p>';
+    x += '<p class="card-text"><h5>Email:</h5> ' + user.Email + '</p>';
+    x += '<p class="card-text"><h5>Password:</h5>**********</p>';
     document.getElementById("profile-info").innerHTML = x;
   });
   loadVendedor();
@@ -591,8 +591,8 @@ function removeDate() {
 	  var email = window.location.hash.substr(1);
 	  get_user(email, function(user){
 	    console.log(user);		  
-	    x = '<p class="card-text"><h4>Número de Vendedor:</h4> ' + user.AccountType + '</p>';
-	    x += '<p class="card-text"><h4>Contacto Telefónico:</h4> ' + user.Mobile + '</p>';
+	    x = '<p class="card-text"><h5>Número de Vendedor:</h5> ' + user.AccountType + '</p>';
+	    x += '<p class="card-text"><h5>Contacto Telefónico:</h5> ' + user.Mobile + '</p>';
 	    document.getElementById("vendedorInfo").innerHTML = x;
 	  });
 	 } 
