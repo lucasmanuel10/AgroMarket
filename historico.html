@@ -203,7 +203,7 @@
 
 <script>
   function loadEncomendas() {
-    var email = "vale@gmail.com";
+    var email = window.location.hash.substr(1);
     get_history(email, function(products){
       for(p in products){
         var nr = products[p].Order;
