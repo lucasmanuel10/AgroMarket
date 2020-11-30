@@ -402,19 +402,19 @@
    var email = window.location.hash.substr(1);
    var number = document.getElementById("inputNVendedor").value;
    var count = 0;
-	 
    var mobile = document.getElementById("inputTelefone").value;
-   if((document.getElementById("inputNVendedor").value != "") && (document.getElementById("inputTelefone").value != "")){
-   	change_account_type(email, number, mobile, function(){
-    	 window.location.href = "https://lucasmanuel10.github.io/AgroMarket/profile(vendedor).html#" + email;
-   	});
-   }else{
+   for(count = 0; count < 1000; count++){
+  	 if((document.getElementById("inputNVendedor").value != "") && (document.getElementById("inputTelefone").value != "")){
+   		change_account_type(email, number, mobile, function(){
+    		 window.location.href = "https://lucasmanuel10.github.io/AgroMarket/profile(vendedor).html#" + email;
+   		});
+   	}else{
 	   if(count>0){
-		x = '<p class="card-text">Preencha os dois campos abaixo!</p>';
-	   	document.getElementById("alerta").innerHTML = x;
+			x = '<p class="card-text">Preencha os dois campos abaixo!</p>';
+	   		document.getElementById("alerta").innerHTML = x;
 	   }   
-	   count++;
 	}
+   }
  }
 
  function loadProfile() {
