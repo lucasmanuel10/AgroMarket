@@ -87,7 +87,10 @@
             <label class="custom-control-label" for="defaultChecked">Perfil de Vendedor</label>
         </div>
           <br>
-      
+      	<br><hr>
+      	<div id="vendedorInfo">
+    
+        </div>
           <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
             Dados de Pagamento
@@ -582,4 +585,15 @@ function removeDate() {
     document.getElementById("profile-info").innerHTML = x;
   });
  } 
+ 
+ function loadProfile() {
+	  loadNavbar();
+	  var email = window.location.hash.substr(1);
+	  get_user(email, function(user){
+	    console.log(user);
+	    x = '<p class="card-text"><strong>Número de Vendedor:</strong> ' + user.nVendedor + '</p>';
+	    x += '<p class="card-text"><strong>Contacto Telefónico:</strong> ' + user.Telefone + '</p>';
+	    document.getElementById("vendedorInfo").innerHTML = x;
+	  });
+	 } 
 </script>
