@@ -64,11 +64,26 @@
   <div class="mt-5">
     <div class="offset-md-2 col-md-8 pt-5 pb-5 pl-5 pr-5 text-center" style="background-color: #F8F8FF;">
       <h2>PAGAMENTO</h2>
-      <hr>
-      <p>Foi-lhe enviado um email com os dados de pagamento.</p>
-      <div class="py-5 border" id="montanteId">
-        <p><b>Entidade: </b>11604</p>
-        <p><b>Referência: </b>397 982 437</p>
+	  <hr>
+	  <div>
+		<p>Escolha o metodo de pagamento</p>
+		<label class="radio-inline">
+			<input type="radio" name="optradio" onclick="checkedMultibanco()"> Multibanco
+		</label>
+		<label class="ml-2 radio-inline">
+			<input type="radio" name="optradio" onclick="checkedMBWay()"> MB Way
+		</label>
+	  </div>
+      <div class="my-3 py-3 border" id="montanteId" style="display: none">
+        <p>Foi-lhe enviado um email com os dados de pagamento.</p>
+        <div id="multID" style="display: none">
+          <p><b>Entidade: </b>11604</p>
+          <p><b>Referência: </b>397 982 437</p>
+        </div>
+        <div id="mbwayID" class="mb-3" style="display: none">
+          <p><b>Insira o número de telemovel</b></p>
+          <input type="number" value="">
+        </div>
       </div>
       <small>*Se pretender levantar o produto no mercado, poderá pagar diretamente ao produtor na hora da compra.</small>
     </div>
@@ -203,9 +218,25 @@
    var type = window.location.hash.substr(1);
    window.location.href = "https://lucasmanuel10.github.io/AgroMarket/home-page.html#" + type;
  }
+ function checkedMBWay() {
+    document.getElementById("montanteId").style.display = "block";
+    document.getElementById("mbwayID").style.display = "block";
+    document.getElementById("multID").style.display = "none";
+ }
+ function checkedMultibanco() {
+    document.getElementById("montanteId").style.display = "block";
+    document.getElementById("multID").style.display = "block";
+    document.getElementById("mbwayID").style.display = "none";
+ }
 </script>
 <style>
 .my-dropdown-menu {
   left: -120px !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 </style>
