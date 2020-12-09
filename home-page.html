@@ -221,6 +221,7 @@
     console.log(item);
     var q = document.getElementById(item + " quantity").value;
     console.log(q);
+    var count = 0;
 
     var email = window.location.hash.substr(1);
     if(q>0){
@@ -228,10 +229,13 @@
       		shoppingCart(email);
     	});
     }else{
-    	x = '<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>'
-    	x += '<p class="card-text">Preencha a quantidade com valores superiores a 0!</p>';
-	   	document.getElementById("alerta").style.visibility = "visible"; 
-   		document.getElementById("alerta").innerHTML = x;
+ 		if(count >=0){
+    		x = '<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>'
+    		x += '<p class="card-text">Preencha a quantidade com valores superiores a 0!</p>';
+	   		document.getElementById("alerta").style.visibility = "visible"; 
+   			document.getElementById("alerta").innerHTML = x;
+   			count++;
+ 		}
     }
   }
 	
