@@ -12,10 +12,10 @@
   <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
-	
+
   <script src="jsFiles/navbar.js"></script>
   <script src="backend.js"></script>
-  
+
   <link rel="stylesheet" href="cssFiles/navbar.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -35,7 +35,7 @@
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-		
+
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item">
@@ -46,11 +46,11 @@
 					<button onclick="sellItem()" id="sellId" class="btn btn-primary btn-success" role="button" style="display: none">Vender</button>
 				</div>
 				<div>
-					<a class="notification" onclick="myShoppingCart()" style="cursor: pointer;"> 
+					<a class="notification" onclick="myShoppingCart()" style="cursor: pointer;">
 						<img src="images/empty-car-icon.png" height="40px">
 						<span id="shoppingcart" class="badge">0</span>
 					</a>
-				</div> 
+				</div>
 				<div class="dropdown text-center">
 					<a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<img src="images/profile_photo.jpg" height="30px" alt=""><br>
@@ -62,10 +62,10 @@
 						<hr>
 						<a class="dropdown-item" href="https://lucasmanuel10.github.io/AgroMarket">Sair</a>
 					</div>
-				</div>     
-			</div>    
+				</div>
+			</div>
     </nav>
-	
+
   <div class="mt-5 container">
     <div class="row">
       <div class="col-md-8 pt-5 pb-5 pl-5 pr-5 bg-light">
@@ -87,33 +87,33 @@
         <div id="idHome">
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-default">Primeiro Nome</span>
+              <span class="input-group-text" id="inputGroup-sizing-default">Primeiro Nome*</span>
             </div>
-            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            <input id="nameH" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-default">Apelido</span>
+              <span class="input-group-text" id="inputGroup-sizing-default">Apelido*</span>
             </div>
-            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            <input id="lnameH" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-default">Morada</span>
+              <span class="input-group-text" id="inputGroup-sizing-default">Morada*</span>
             </div>
-            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            <input id="morada" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-default">Código Postal</span>
+              <span class="input-group-text" id="inputGroup-sizing-default">Código Postal*</span>
             </div>
-            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            <input id="postal" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-default">Cidade</span>
+              <span class="input-group-text" id="inputGroup-sizing-default">Cidade*</span>
             </div>
-            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            <input id="city" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
@@ -131,15 +131,15 @@
         <div id="idMarket" style="display: none">
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-default">Primeiro Nome</span>
+              <span class="input-group-text" id="name">Primeiro Nome*</span>
             </div>
-            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            <input id="nameM" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-default">Apelido</span>
+              <span class="input-group-text" id="lname">Apelido*</span>
             </div>
-            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            <input id="lnameM" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
@@ -154,33 +154,43 @@
             <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
           </div>
         </div>
+
+        <div class="text-center" id="required">
+
+        </div>
+
       </div>
 
-      
-      
+
+
       <div class="col-md-3 ml-5" >
         <div class="py-3 bg-light">
           <h5 class="text-center">A tua compra:</h5>
           <div id="productsId">
             <hr>
             <div class="ml-2"> <!--Vai estar em loop tbem-->
-              
+
             </div>
             <hr>
           </div>
           <div id="total" class="ml-2">
-            
+
           </div>
         </div>
+
       </div>
 
+
+
     </div>
-    
+
+
+
     <div class="col-md-8 my-3 pr-4">
       <a onclick="go_to_payment()" class="btn btn-success btn-block" role="button">Pagar</a>
     </div>
   </div>
-	
+
 	<footer class="page-footer font-small blue-grey lighten-5">
 		<!--<div style="background-color: #21d192;">-->
 		<div style="background-color: rgba(30, 130, 76, 1)">
@@ -193,7 +203,7 @@
 						<h6 class="mb-0">Liga-te também nas nossas redes sociais!</h6>
 					</div>
 					<!-- Grid column -->
-					
+
 					<!-- Grid column -->
 					<div class="col-md-6 col-lg-7 text-center text-md-right">
 
@@ -231,10 +241,10 @@
 						style="width: 175px;">
 					<br> <img src="images/logo.png" alt="AgroMarket"
 						width="150" height="150" class="float-left mr-4">
-					<br> 
+					<br>
 					<p class="text-justify">Esta é uma ferramenta criada com o
 						propósito de oferecer a todos, uma forma fácil de conhecer,
-						interagir e usufruir dos produtos e mercados mais confiáveis que 
+						interagir e usufruir dos produtos e mercados mais confiáveis que
 						Portugal tem para oferecer!</p>
 				</div>
 				<!-- Grid column -->
@@ -295,11 +305,11 @@
 
   function checkedHome() {
     document.getElementById("idHome").style.display = "block";
-    document.getElementById("idMarket").style.display = "none";    
+    document.getElementById("idMarket").style.display = "none";
   }
   function checkedMarket() {
     document.getElementById("idHome").style.display = "none";
-    document.getElementById("idMarket").style.display = "block";    
+    document.getElementById("idMarket").style.display = "block";
   }
   function loadCompra() {
     loadNavbar();
@@ -323,10 +333,36 @@
   }
 
   function go_to_payment() {
-    var email = window.location.hash.substr(1);
-    window.location.href = "https://lucasmanuel10.github.io/AgroMarket/payment.html?montante=" + total + "#" + email;
+    var allowed = true;
+
+    if(document.getElementById("idHome").style.display != "none") {
+      var nameH = document.getElementById('nameH').value;
+      var lnameH = document.getElementById('lnameH').value;
+      var morada = document.getElementById('morada').value;
+      var postal = document.getElementById('postal').value;
+      var city = document.getElementById('city').value;
+
+      if(name == "" || lname == "" || morada == "" || postal == "" || city == "")
+        allowed = false;
+
+    } else {
+      var nameM = document.getElementById('nameM').value;
+      var lnameM = document.getElementById('lnameM').value;
+
+      if(nameM == "" || lnameM == "")
+        allowed = false;
+    }
+
+    if(allowed) {
+      var email = window.location.hash.substr(1);
+      window.location.href = "https://lucasmanuel10.github.io/AgroMarket/payment.html?montante=" + total + "#" + email;
+    } else {
+      var req = document.getElementById("required");
+      req.innerHTML = '<p class="mb-0 mt-4" style="color: red">*Por favor, preencha os campos obrigatórios</p>';
+    }
+
   }
-	
+
    function passEmail(){
    var type = window.location.hash.substr(1);
    window.location.href = "https://lucasmanuel10.github.io/AgroMarket/home-page.html#" + type;
