@@ -58,6 +58,10 @@
 			</div>    
     </nav>
     
+    <div id="alerta" class="alert alert-danger" style="visibility: hidden;" role="alert">
+	</div>
+    
+    
     <div onload="loadProducts()" id="produtos">
 	    
     </div>
@@ -219,9 +223,17 @@
     console.log(q);
 
     var email = window.location.hash.substr(1);
-    add_to_cart(email, item, q, function(){
-      shoppingCart(email);
-    });
+    if(q>0){
+    	add_to_cart(email, item, q, function(){
+      		shoppingCart(email);
+    	});
+    }else{
+    	x = '<p class="card-text">Preencha a quantidade com valores superiores a 0!</p>';
+	   	document.getElementById("alerta").style.visibility = "visible"; 
+   		document.getElementById("alerta").innerHTML = x;
+    }
+  }
+
   }
 	
    function passEmail(){
