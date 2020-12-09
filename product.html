@@ -66,6 +66,9 @@
 				</div>     
 			</div>    
     </nav>
+    
+    <div id="alerta" class="alert alert-danger" style="margin-left:15px; visibility: hidden;" role="alert">
+	</div>
 
   <div class="mt-5">
     <div class="row offset-md-2 col-md-8 pt-5 pb-5 pl-5 mb-5 bg-light">
@@ -216,9 +219,15 @@
     var email = window.location.hash.substr(1);
     console.log(email);
 
-    add_to_cart(email, item, q, function(){
-      shoppingCart(email);
-    });
+    if(q>0){
+    	add_to_cart(email, item, q, function(){
+      		shoppingCart(email);
+    	});
+    }else{
+    	x = '<p class="card-text">Preencha a quantidade com valores superiores a 0!</p>';
+	   	document.getElementById("alerta").style.visibility = "visible"; 
+   		document.getElementById("alerta").innerHTML = x;
+    }
   }
 
    function passEmail(){
