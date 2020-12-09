@@ -224,9 +224,10 @@
       		shoppingCart(email);
     	});
     }else{
-    	x = '<p class="card-text">Preencha a quantidade com valores superiores a 0!</p>';
-	   	document.getElementById("alerta").style.visibility = "visible"; 
-   		document.getElementById("alerta").innerHTML = x;
+    		x = '<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>'
+    		x += '<p class="card-text">Preencha a quantidade com valores superiores a 0!</p>';
+	   		document.getElementById("alerta").style.visibility = "visible"; 
+   			document.getElementById("alerta").innerHTML = x;
     }
   }
 
