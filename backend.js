@@ -160,6 +160,7 @@ function add_to_cart(email, product_name, quantity, callback) {
             callback(product);
         } else {
             callback("jebaited");
+            console.log("you got jebaited")
         } 
     });   
 }
