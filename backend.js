@@ -2,20 +2,29 @@ var database = null;
 var current_user = null;
 
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-var firebaseConfig = {
-    apiKey: "AIzaSyA2JNM8baGJWfSa59WQd3-8P-9zqC9TV3U",
-    authDomain: "projeto1-cbb1a.firebaseapp.com",
-    databaseURL: "https://projeto1-cbb1a.firebaseio.com",
-    projectId: "projeto1-cbb1a",
-    storageBucket: "projeto1-cbb1a.appspot.com",
-    messagingSenderId: "366062903132",
-    appId: "1:366062903132:web:f319507ffa693e32fd2b99",
-    measurementId: "G-T5155MKZ4N"
-};
+  var firebaseConfig = {
+    apiKey: "AIzaSyAGEUdc8_L2qS3WBpzymAuWa1KQP0a8biI",
+    authDomain: "agromarket-c96cc.firebaseapp.com",
+    projectId: "agromarket-c96cc",
+    storageBucket: "agromarket-c96cc.appspot.com",
+    messagingSenderId: "490240205541",
+    appId: "1:490240205541:web:6125d9473026678c77aa0c"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+//var firebaseConfig = {
+//    apiKey: "AIzaSyA2JNM8baGJWfSa59WQd3-8P-9zqC9TV3U",
+//    authDomain: "projeto1-cbb1a.firebaseapp.com",
+//    databaseURL: "https://projeto1-cbb1a.firebaseio.com",
+//    projectId: "projeto1-cbb1a",
+//    storageBucket: "projeto1-cbb1a.appspot.com",
+//    messagingSenderId: "366062903132",
+//    appId: "1:366062903132:web:f319507ffa693e32fd2b99",
+//    measurementId: "G-T5155MKZ4N"
+//};
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+//firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
 
